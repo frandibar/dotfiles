@@ -42,6 +42,28 @@
   services.keybase.enable = true;
   services.kbfs.enable = true;
 
+  services.syncthing = {
+      enable = true;
+      user = "frandibar";
+      dataDir = "/home/frandibar/Sync";                 # Default folder for new synced folders
+      configDir = "/home/frandibar/.config/syncthing";  # Folder for Syncthing's settings and keys
+  };
+
+  # Dropbox
+  systemd.user.services.dropbox = {
+    description = "Dropbox";
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+      KillMode = "control-group"; # upstream recommends process
+      Restart = "on-failure";
+      PrivateTmp = true;
+      ProtectSystem = "full";
+      Nice = 10;
+    };
+  };
+
   #
   # NETWORKING
   #
@@ -310,6 +332,7 @@
     flameshot         # screenshots
     #gnome.sushi      # file preview
     dropbox-cli
+    syncthing         # file sync
     keybase
     keybase-gui
 
@@ -329,20 +352,4 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # dropbox
-  systemd.user.services.dropbox = {
-    description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-      KillMode = "control-group"; # upstream recommends process
-      Restart = "on-failure";
-      PrivateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
-  };
-
 }
