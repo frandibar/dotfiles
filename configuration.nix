@@ -162,6 +162,12 @@
       font-awesome
       dejavu_fonts
       fira-code
+
+      # These fonts are used by Doom Emacs
+      # Unfortunately `doom doctor` still reports them as missing...
+      # Don't use weather-icons as the volume icon in status bar is swapped with a rainy cloud!
+      material-design-icons
+      # weather-icons
   ];
 
   #
@@ -272,6 +278,12 @@
     emacs29
     emacsPackages.dired-fdclone
     #(emacs29.override { gtk = pkgs.gtk3; })
+    # These fonts are used by Doom Emacs
+    # Unfortunately `doom doctor` still reports them as missing
+    emacsPackages.fontawesome
+    emacsPackages.octicons
+    emacsPackages.all-the-icons
+
     git
     difftastic
     python3Minimal

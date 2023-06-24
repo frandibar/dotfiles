@@ -8,12 +8,12 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-(package! rainbow-mode)  ; highlight text representing color codes
-(package! prettier)      ; html, js formatting
-(package! eglot)         ; language server client
-(package! fish-mode)     ; fish shell scripts mode
+(package! rainbow-mode)       ; highlight text representing color codes
+(package! prettier)           ; html, js formatting
+(package! eglot)              ; language server client
+(package! fish-mode)          ; fish shell scripts mode
 (package! direnv)
-(package! flycheck-lilypond)
+(package! flycheck-lilypond)  ; music sheets
 (package! keycast)
 ;; (package! sly)  ; this is supposed to integrate with nyxt better than slime, but couldn't get it to work
 (package! slime)

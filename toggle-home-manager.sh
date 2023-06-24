@@ -19,7 +19,7 @@ SRC=~/dotfiles/sources
 unplug_file () {
     # If it's not a symbolic link then it's not a home-manager file
     if [[ -L "$CONFIG/$1" ]]; then
-        echo "Copying '$SRC/$1' into '$config/$1'"
+        echo "Copying '$SRC/$1' into '$CONFIG/$1'"
         cp --force "$SRC/$1" "$CONFIG/$1"
     else
         echo "File '$CONFIG/$1' is already unplugged"
@@ -37,8 +37,10 @@ plug_file () {
 }
 
 files=(
-    # "doom/config.el"
-    "i3/config"
+    "doom/config.el"
+    "doom/init.el"
+    "doom/packages.el"
+    # "i3/config"
     # "i3/i3blocks.conf"
     # "i3/scripts/bluetooth.sh"
     # "i3/scripts/calendar.sh"

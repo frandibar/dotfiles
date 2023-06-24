@@ -137,7 +137,6 @@
 ;;   :config
 ;;   (add-hook 'after-init-hook #'global-prettier-mode))
 
-
 (add-hook 'prog-mode-hook 'follow-mode)
 
 (autoload 'LilyPond-mode "lilypond-mode")
@@ -145,13 +144,13 @@
       (cons '("\\.ly$" . LilyPond-mode) auto-mode-alist))
 
 (add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
+;; FIXME: fix path for NixOS
 (setq load-path (append (list "/usr/share/emacs/site-lisp") load-path))
 (setq LilyPond-pdf-command "zathura")
 
-;; font characterized by g09
-(setq doom-font (font-spec :family "Fira Code" :size 32 :weight 'medium))
-;;(setq doom-font (font-spec :family "Hasklug Nerd Font" :size 36 :weight 'medium))
-;; accept completion from copilot and fallback to company
+;; Fira Code has ligatures, I want this for prog mode only but this way sets it globally
+;; (setq doom-font "Fira Code-14")
+(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 16))
 
 ;; The default behaviour when switching to most recent buffer (SPC `) omits
 ;; buffers that don't have an associated file name.
@@ -165,16 +164,9 @@
   :bind (:map evil-normal-state-map
               ("Y" . 'frandibar/yank-whole-line)))
 
-(use-package mgs
-  :load-path "~/.config/doom/modules/frandibar")
-
-;; Prevent output truncation
-;; (setq comint-buffer-maximum-size 100000)
-
-;; Commented out, not sure if necessary
-;; (use-package direnv
-;;  :config
-;;  (direnv-mode))
+(use-package direnv
+ :config
+ (direnv-mode))
 
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
@@ -194,3 +186,12 @@
 
 ;; I want the org clock report expressed in hours, not days
 (setq org-duration-format 'h:mm)
+
+;; Active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((haskell . t)
+   (emacs-lisp . t)))
+
+;; Prevent output truncation
+;; (setq comint-buffer-maximum-size 100000)
