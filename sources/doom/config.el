@@ -195,3 +195,9 @@
 
 ;; Prevent output truncation
 ;; (setq comint-buffer-maximum-size 100000)
+
+;; Prevent automatic indentation in org mode code blocks
+;; https://stackoverflow.com/questions/53469017/org-mode-source-editing-indents-code-after-exiting-source-code-block-editor
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-preserve-indentation t)
