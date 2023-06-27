@@ -63,9 +63,9 @@
   :config
   (setq org-directory "~/keybase/org")
 
-  (setq org-agenda-files (quote ("~/Dropbox/docs/cumples.org"
+  (setq org-agenda-files (quote ("~/Sync/docs/cumples.org"
                                  "todo.org"
-                                 ;; "~/Dropbox/docs/agenda-personal.org"
+                                 ;; "~/Sync/docs/agenda-personal.org"
                                  )))
 
   (setq org-capture-templates

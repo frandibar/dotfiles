@@ -48,21 +48,6 @@
       configDir = "/home/frandibar/.config/syncthing";  # Folder for Syncthing's settings and keys
   };
 
-  # Dropbox
-  systemd.user.services.dropbox = {
-    description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-      KillMode = "control-group"; # upstream recommends process
-      Restart = "on-failure";
-      PrivateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
-  };
-
   #
   # NETWORKING
   #
@@ -326,7 +311,6 @@
     mpv               # video player
     flameshot         # screenshots
     #gnome.sushi      # file preview
-    dropbox-cli
     syncthing         # file sync
     keybase
     keybase-gui
