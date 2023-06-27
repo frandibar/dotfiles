@@ -7,7 +7,6 @@
   # NIX
   #
   imports = [
-      ./hardware-configuration.nix
       ./home.nix
     ];
 
@@ -67,7 +66,6 @@
   #
   # NETWORKING
   #
-  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -215,9 +213,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support
-  services.xserver.libinput.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;
