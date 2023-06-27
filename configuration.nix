@@ -221,10 +221,10 @@
   #
   # USER ENVIRONMENT
   #
+  environment.variables.EDITOR = "vim";
 
-  environment.variables.EDITOR = "urvxt";
-
-  # nixos-rebuild build-vm test user, see https://nixos.wiki/wiki/NixOS:nixos-rebuild_build-vm
+  # nixos-rebuild build-vm test user, see
+  # https://nixos.wiki/wiki/NixOS:nixos-rebuild_build-vm
   users.users.nixostest = {
     isNormalUser = true;
     initialPassword = "password";
@@ -253,7 +253,7 @@
     fish
     curl
     wget
-    rxvt_unicode
+    alacritty      # terminal
     procs          # alternative to ps
     fd             # alternative to find
 #   nushell

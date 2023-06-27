@@ -17,6 +17,7 @@
     home.stateVersion = "23.05";
 
     home.file = {
+      ".config/alacritty/alacritty.yml".source = ./sources/alacritty.yml;
       ".config/doom" = {
         source = ./sources/doom;
         recursive = true;

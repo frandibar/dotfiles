@@ -41,20 +41,5 @@
 *.color15: #ffffff
 
 
-!################
-! URxvt settings
-!################
-URxvt*font: xft:DejaVuSansMono:Size=14:antialias=true
-URxvt.scrollBar: false
-
-# Fixes initial prompt starting on the middle line of the screen
-# https://bbs.archlinux.org/viewtopic.php?id=282791
-URxvt.geometry: 400x400
-
-!URxvt*borderLess: false 
-!URxvt*externalBorder: 0 
-!URxvt*internalBorder: 4
-URxvt*saveLines: 5000
-
 ! High resolution monitors, set scaling to 200%
 ! Xft.dpi: 192

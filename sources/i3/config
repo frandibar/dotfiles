@@ -94,7 +94,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -317,30 +317,24 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # Set natural scroll
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
 
-# Set urxvt settings
-exec --no-startup-id xrdb -merge ~/.config/X11/Xresources
-
 # For keybase filesystem to mount
 exec --no-startup-id kbfsfuse
 
 # Automount usb drives
 exec --no-startup-id udiskie --automount
 
-# Launch urxvt daemon
-exec --no-startup-id urxvtd --opendisplay --quiet --fork
-
 # FIXME: not working as expected
 # htop scratchpad
-for_window [instance="htop_scratchpad"] move to scratchpad, border none
-bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
-exec --no-startup-id urxvtc -name htop_scratchpad -e htop
+# for_window [instance="htop_scratchpad"] move to scratchpad, border none
+# bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
+# exec --no-startup-id alacritty -name htop_scratchpad -e htop
 
 # FIXME: not working as expected
 # Terminal scratchpad
-for_window [instance="terminal_scratchpad"] floating enable, move scratchpad, border pixel 5
-for_window [instance="terminal_scratchpad"] resize set 625 400
-exec --no-startup-id urxvtc -name terminal_scratchpad
-bindsym $mod+Shift+t [instance="terminal_scratchpad"] scratchpad show
+# for_window [instance="terminal_scratchpad"] floating enable, move scratchpad, border pixel 5
+# for_window [instance="terminal_scratchpad"] resize set 625 400
+# exec --no-startup-id alacritty -name terminal_scratchpad
+# bindsym $mod+Shift+t [instance="terminal_scratchpad"] scratchpad show
 
 # Trying out new settings requires rebuilding Nix and restarting i3, this is not
 # fun. Instead we include a non managed local file, write the settings there and
