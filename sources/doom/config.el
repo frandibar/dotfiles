@@ -93,7 +93,7 @@
            "* %?\n%u" :prepend t)
           ("p" "peliculas" entry
            (file+headline "~/Dropbox/docs/peliculas.org" "Peliculas Vistas")
-           "* TODO %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
+           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "PROJ(p)" "HOLD(h)" "IDEA(i)" "READ(r)" "|" "DONE(d)" "KILL(k)")
@@ -164,11 +164,7 @@
   :bind (:map evil-normal-state-map
               ("Y" . 'frandibar/yank-whole-line)))
 
-(use-package direnv
- :config
- (direnv-mode))
-
-(use-package! copilot
+(use-package copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
               ("<tab>" . 'copilot-accept-completion)

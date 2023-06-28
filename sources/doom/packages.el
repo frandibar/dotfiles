@@ -12,11 +12,11 @@
 (package! prettier)           ; html, js formatting
 (package! eglot)              ; language server client
 (package! fish-mode)          ; fish shell scripts mode
-(package! direnv)
 (package! flycheck-lilypond)  ; music sheets
 (package! keycast)
-;; (package! sly)  ; this is supposed to integrate with nyxt better than slime, but couldn't get it to work
+(package! copilot :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 (package! slime)
+;; (package! sly)  ; This is supposed to integrate with nyxt better than slime, but I couldn't get it to work
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
@@ -59,5 +59,3 @@
 ;(unpin! t)
 
 
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
