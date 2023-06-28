@@ -297,6 +297,7 @@
     elmPackages.elm-test
     jq                      # json query
     nodejs_20
+    nixfmt                  # nix formatter
 #   meld                    # diffs
 
     # Musicsheets
@@ -327,8 +328,8 @@
 
   programs.fish.enable = true;
 
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    # enableSSHSupport = true;
+  };
 }
