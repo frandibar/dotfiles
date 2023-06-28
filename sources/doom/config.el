@@ -29,7 +29,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Sync/docs/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -61,11 +61,9 @@
 
 (use-package org
   :config
-  (setq org-directory "~/keybase/org")
-
-  (setq org-agenda-files (quote ("~/Sync/docs/cumples.org"
+  (setq org-agenda-files (quote ("cumples.org"
                                  "todo.org"
-                                 ;; "~/Sync/docs/agenda-personal.org"
+                                 "agenda-personal.org"
                                  )))
 
   (setq org-capture-templates
@@ -92,7 +90,7 @@
            (file "nyxt.org")
            "* %?\n%u" :prepend t)
           ("p" "peliculas" entry
-           (file+headline "~/Dropbox/docs/peliculas.org" "Peliculas Vistas")
+           (file+headline "peliculas.org" "Peliculas Vistas")
            "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
 
   (setq org-todo-keywords
