@@ -80,10 +80,16 @@ exec --no-startup-id nm-applet
 
 # Or i3blocks (the 10 in RTMIN+10 must be the same as the signal defined in i3blocks config)
 set $refresh_i3status pkill -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%+ && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%- && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+set $notify_volume ~/.config/i3/scripts/notify-volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%+ && $refresh_i3status && $notify_volume
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%- && $refresh_i3status && $notify_volume
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle && $refresh_i3status && $notify_volume
 bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Adjust screen brightness
+set $notify_brightness ~/.config/i3/scripts/notify-brightness.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && $notify_brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+ && $notify_brightness
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

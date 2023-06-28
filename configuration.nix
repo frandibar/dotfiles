@@ -265,6 +265,8 @@
     appimage-run
     direnv         # load env depending on current dir
     htop           # alternative to top
+    brightnessctl  # adjust brightness
+    libnotify      # provides notify-send for toasts
 #   atool          # deal with zip files
 #   pstree         # alternative to ps
 #   feh            # change background image
