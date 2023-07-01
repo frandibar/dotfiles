@@ -292,6 +292,7 @@
     git
     difftastic
     python3Minimal
+    python310Packages.gnureadline  # required by icsv2ledger
     ghc                     # haskell
     elmPackages.elm
     elmPackages.elm-format
@@ -319,6 +320,7 @@
     syncthing         # file sync
     keybase
     keybase-gui
+    ledger
 
     # Dependencies
     yad              # i3blocks calendar
