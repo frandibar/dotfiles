@@ -267,6 +267,7 @@
     htop           # alternative to top
     brightnessctl  # adjust brightness
     libnotify      # provides notify-send for toasts
+    gnumake
 #   atool          # deal with zip files
 #   pstree         # alternative to ps
 #   feh            # change background image
@@ -304,6 +305,7 @@
 
     # Musicsheets
     musescore
+    lilypond
     timidity          # midi
 
     # Misc
