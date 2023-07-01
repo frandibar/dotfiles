@@ -279,14 +279,14 @@
     chromium
 
     # Programming
-    emacs29
+    emacs
     emacsPackages.dired-fdclone
-    #(emacs29.override { gtk = pkgs.gtk3; })
     # These fonts are used by Doom Emacs
     # Unfortunately `doom doctor` still reports them as missing
     emacsPackages.fontawesome
     emacsPackages.octicons
     emacsPackages.all-the-icons
+    emacsPackages.nerd-icons
 
     git
     difftastic
