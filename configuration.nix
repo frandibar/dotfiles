@@ -303,6 +303,12 @@
     nodejs_20
     nixfmt                  # nix formatter
 #   meld                    # diffs
+    html-tidy               # emacs doom doctor
+    nodePackages.stylelint  # emacs doom doctor
+    jsbeautifier            # emacs doom doctor
+    shellcheck              # emacs doom doctor
+    haskell-language-server
+    haskellPackages.hoogle
 
     # Musicsheets
     musescore
