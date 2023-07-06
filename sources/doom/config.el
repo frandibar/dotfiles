@@ -56,8 +56,7 @@
 ;;
 ;; MY CUSTOM SETTINGS
 ;;
-;; remap Y from evil-yank-line since it doesn't behave as I would expect
-;; (define-key evil-normal-state-map (kbd "Y") 'evil-collection-magit-yank-whole-line)
+
 ;; By default, emacs saves bookmarks to file when exiting emacs. Instead I want
 ;; to save them immediately when they are added, to avoid loosing them if emacs
 ;; crashes.
@@ -67,6 +66,13 @@
 ;; this value to dired-buffer-stale-p, which may be ok, just in case I need to
 ;; revisit this later I'll leave this commented here.
 ;; (setq dired-auto-revert-buffer t)
+;; Prevent output truncation
+;; (setq comint-buffer-maximum-size 100000)
+
+;; Maximize screen
+;; Commented out as it's no longer necessary since using i3wm
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 ;; By default, buffers are not updated when changed on disk.
 ;; Make auto revert automatic.
 (setq global-auto-revert-mode t)
@@ -80,6 +86,31 @@
 ;; By default eshell doesn't scroll to bottom on input
 ;; Let's change this.
 (setq eshell-scroll-to-bottom-on-input 'this)
+
+;; Read code with two panes side by side as if reading a book.
+(add-hook 'prog-mode-hook 'follow-mode)
+
+(autoload 'LilyPond-mode "lilypond-mode")
+(setq auto-mode-alist
+      (cons '("\\.ly$" . LilyPond-mode) auto-mode-alist))
+
+(add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
+;; FIXME: fix path for NixOS
+(setq load-path (append (list "/usr/share/emacs/site-lisp") load-path))
+(setq LilyPond-pdf-command "zathura")
+
+;; Fira Code has ligatures, I want this for prog mode only but this way sets it globally
+;; (setq doom-font "Fira Code-14")
+(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 16))
+
+;; The default behaviour when switching to most recent buffer (SPC `) omits
+;; buffers that don't have an associated file name.
+;; Override that by removing the default value doom-non-file-visiting-buffer-p
+(setq doom-unreal-buffer-functions '(minibufferp doom-special-buffer-p))
+
+(setq inferior-lisp-program "sbcl")
+
+
 (use-package org
   :config
   (setq org-agenda-files (quote ("cumples.org"
@@ -90,7 +121,7 @@
   (setq org-capture-templates
         '(("t" "work todo" entry
            (file "todo.org")
-          "* TODO %?\n%i\n%u\n%a" :prepend t)
+           "* TODO %?\n%i\n%u\n%a" :prepend t)
           ("n" "work note" entry
            (file "notes.org")
            "* %?\n%u" :prepend t)
@@ -118,14 +149,27 @@
         '((sequence "TODO(t)" "PROJ(p)" "HOLD(h)" "IDEA(i)" "READ(r)" "|" "DONE(d)" "KILL(k)")
           (sequence "[ ](T)" "|" "[X](D)")))
 
-  ;; System locale to use for formatting time values.
-  (setq system-time-locale "C")       ; Make sure that the weekdays in the
-                                      ; time stamps of your Org mode files and
-                                      ; in the agenda appear in English.
-  )
+  ;; System locale to use for formatting time values. Make sure that the
+  ;; weekdays in the time stamps of your Org mode files and in the agenda appear
+  ;; in English.
+  (setq system-time-locale "C")
 
-;; maximize screen
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+  ;; I want the org clock report expressed in hours, not days
+  (setq org-duration-format 'h:mm)
+
+  ;; Active Babel languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((haskell . t)
+     (emacs-lisp . t)))
+
+  ;; Prevent automatic indentation in org mode code blocks
+  ;; https://stackoverflow.com/questions/53469017/org-mode-source-editing-indents-code-after-exiting-source-code-block-editor
+  (setq org-edit-src-content-indentation 0
+        org-src-tab-acts-natively t
+        org-src-preserve-indentation t)
+
+  )
 
 (use-package expand-region
   :config
@@ -139,57 +183,19 @@
   ;; (add-hook 'elm-mode-hook 'eglot-ensure)
   )
 
-;; https://github.com/elm-tooling/elm-language-server
-(after! lsp-ui
-  (setq lsp-ui-doc-max-width 100)
-  (setq lsp-ui-doc-max-height 30)
-  (setq lsp-ui-sideline-show-code-actions nil)
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-doc-show-with-cursor nil)
-  (setq lsp-ui-doc-show-with-mouse nil)
-  (setq lsp-lens-enable nil)
-  (setq lsp-enable-symbol-highlighting nil)
-  )
-
 ;; For js code formatting
 ;; (use-package prettier
 ;;   :config
 ;;   (add-hook 'after-init-hook #'global-prettier-mode))
 
-(add-hook 'prog-mode-hook 'follow-mode)
+;; (use-package copilot
+;;   :hook (prog-mode . copilot-mode)
+;;   :bind (:map copilot-completion-map
+;;               ("<tab>" . 'copilot-accept-completion)
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("C-TAB" . 'copilot-accept-completion-by-word)
+;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
-(autoload 'LilyPond-mode "lilypond-mode")
-(setq auto-mode-alist
-      (cons '("\\.ly$" . LilyPond-mode) auto-mode-alist))
-
-(add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
-;; FIXME: fix path for NixOS
-(setq load-path (append (list "/usr/share/emacs/site-lisp") load-path))
-(setq LilyPond-pdf-command "zathura")
-
-;; Fira Code has ligatures, I want this for prog mode only but this way sets it globally
-;; (setq doom-font "Fira Code-14")
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 16))
-
-;; The default behaviour when switching to most recent buffer (SPC `) omits
-;; buffers that don't have an associated file name.
-;; Override that by removing the default value doom-non-file-visiting-buffer-p
-(setq doom-unreal-buffer-functions '(minibufferp doom-special-buffer-p))
-
-(setq inferior-lisp-program "sbcl")
-
-(use-package frandibar
-  :load-path "~/.config/doom/modules/frandibar"
-  :bind (:map evil-normal-state-map
-              ("Y" . 'frandibar/yank-whole-line)))
-
-(use-package copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 (use-package magit
   :config
   ;; Make magit save files when appropriate.
@@ -204,20 +210,25 @@
                 ;; deft-use-filename-as-title t
                 ))
 
-;; I want the org clock report expressed in hours, not days
-(setq org-duration-format 'h:mm)
+(use-package frandibar
+  :load-path "~/.config/doom/modules/frandibar"
+  :bind (:map evil-normal-state-map
+              ("Y" . 'frandibar/yank-whole-line)))
+;; Remap Y from evil-yank-line since it doesn't behave as I would expect
+;; I would have expected the following to work, but instead I rely on frandibar/yank-whole-line
+;;
+;; (define-key evil-normal-state-map (kbd "Y") 'evil-collection-magit-yank-whole-line)
 
-;; Active Babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((haskell . t)
-   (emacs-lisp . t)))
 
-;; Prevent output truncation
-;; (setq comint-buffer-maximum-size 100000)
+;; https://github.com/elm-tooling/elm-language-server
+(after! lsp-ui
+  (setq lsp-ui-doc-max-width 100)
+  (setq lsp-ui-doc-max-height 30)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-lens-enable nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  )
 
-;; Prevent automatic indentation in org mode code blocks
-;; https://stackoverflow.com/questions/53469017/org-mode-source-editing-indents-code-after-exiting-source-code-block-editor
-(setq org-edit-src-content-indentation 0
-      org-src-tab-acts-natively t
-      org-src-preserve-indentation t)

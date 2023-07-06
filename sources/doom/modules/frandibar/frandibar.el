@@ -1,8 +1,5 @@
 ;;; package --- frandibar.el
 
-;;; Commentary:
-;;; My own useful functions
-
 ;;; Code:
 
 ;;;###autoload
