@@ -58,7 +58,28 @@
 ;;
 ;; remap Y from evil-yank-line since it doesn't behave as I would expect
 ;; (define-key evil-normal-state-map (kbd "Y") 'evil-collection-magit-yank-whole-line)
+;; By default, emacs saves bookmarks to file when exiting emacs. Instead I want
+;; to save them immediately when they are added, to avoid loosing them if emacs
+;; crashes.
+(setq bookmark-save-flag 1)
 
+;; By default, outdated dired buffers are not auto refreshed. Doom emacs set's
+;; this value to dired-buffer-stale-p, which may be ok, just in case I need to
+;; revisit this later I'll leave this commented here.
+;; (setq dired-auto-revert-buffer t)
+;; By default, buffers are not updated when changed on disk.
+;; Make auto revert automatic.
+(setq global-auto-revert-mode t)
+(setq global-auto-revert-non-file-buffers t)
+
+;; Make dired emulate midnight commander to having two buffers side by side and
+;; moving files between both.
+;; Emacs default is nil, doom's is t.
+(setq dired-dwim-target 'dired-dwim-target-next)
+
+;; By default eshell doesn't scroll to bottom on input
+;; Let's change this.
+(setq eshell-scroll-to-bottom-on-input 'this)
 (use-package org
   :config
   (setq org-agenda-files (quote ("cumples.org"
@@ -169,6 +190,11 @@
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
+(use-package magit
+  :config
+  ;; Make magit save files when appropriate.
+  ;; Default is t, doom's is nil
+  (setq magit-save-repository-buffers 'dontask))
 
 (use-package deft
   :config (setq deft-directory "~/keybase/deft"
