@@ -210,6 +210,19 @@
                 ;; deft-use-filename-as-title t
                 ))
 
+(use-package ledger-mode
+  :config
+  (setq ledger-reports
+        '(("assets-in-usd" "%(binary) bal --price-db prices.db assets --current --exchange usd")
+          ("expenses-this-month" "%(binary) bal expenses --period %(month) --current --sort amount")
+          ("balance-stablecoins" "%(binary) bal assets --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
+          ("balance-stablecoins-in-usd" "%(binary) bal assets --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/' --price-db prices.db --exchange usd")
+          ("expenses-pending-this-month" "%(binary) bal expenses --period %(month) --uncleared --sort amount")
+          ("bal" "%(binary) bal")
+          ("reg" "%(binary) reg")
+          ("payee" "%(binary) reg @%(payee)")
+          ("account" "%(binary) reg %(account)"))))
+
 (use-package frandibar
   :load-path "~/.config/doom/modules/frandibar"
   :bind (:map evil-normal-state-map

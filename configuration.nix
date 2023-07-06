@@ -315,6 +315,12 @@
     lilypond
     timidity          # midi
 
+    # Ledger
+    ledger
+    hledger
+    hledger-ui
+    hledger-web
+
     # Misc
     spotify
     telegram-desktop
@@ -326,7 +332,6 @@
     syncthing         # file sync
     keybase
     keybase-gui
-    ledger
 
     # Dependencies
     yad              # i3blocks calendar
