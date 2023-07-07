@@ -8,7 +8,9 @@
   #
   imports = [
       ./home.nix
+      ./keybase.nix
       ./ledger-nano.nix
+      ./syncthing.nix
     ];
 
   # This value determines the NixOS release from which the default
@@ -37,17 +39,6 @@
   # FILE SYSTEM
   #
   # boot.supportedFilesystems = [ "ntfs" "vfat" "exfat" ];
-
-  # Keybase
-  services.keybase.enable = true;
-  services.kbfs.enable = true;
-
-  services.syncthing = {
-      enable = true;
-      user = "frandibar";
-      dataDir = "/home/frandibar/Sync";                 # Default folder for new synced folders
-      configDir = "/home/frandibar/.config/syncthing";  # Folder for Syncthing's settings and keys
-  };
 
   #
   # NETWORKING
@@ -332,9 +323,6 @@
     mpv               # video player
     flameshot         # screenshots
     #gnome.sushi      # file preview
-    syncthing         # file sync
-    keybase
-    keybase-gui
 
     # Dependencies
     yad              # i3blocks calendar
