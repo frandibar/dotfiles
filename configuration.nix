@@ -309,6 +309,8 @@
     shellcheck              # emacs doom doctor
     haskell-language-server
     haskellPackages.hoogle
+    sqlite
+    metabase                # data analytics
 
     # Musicsheets
     musescore
