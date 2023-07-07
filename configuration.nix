@@ -8,6 +8,7 @@
   #
   imports = [
       ./home.nix
+      ./ledger-nano.nix
     ];
 
   # This value determines the NixOS release from which the default
@@ -315,9 +316,9 @@
     # Musicsheets
     musescore
     lilypond
-    timidity          # midi
+    timidity                # midi
 
-    # Ledger
+    # Ledger accounting
     ledger
     hledger
     hledger-ui
