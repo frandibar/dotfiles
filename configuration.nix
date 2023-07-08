@@ -316,6 +316,7 @@
     hledger-web
 
     # Misc
+    gnumeric
     spotify
     telegram-desktop
     zoom-us
