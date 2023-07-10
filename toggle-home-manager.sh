@@ -14,7 +14,7 @@
 # up with in this script.
 
 CONFIG=~/.config
-SRC=~/dotfiles/sources
+SRC=~/github/dotfiles/sources
 
 unplug_file () {
     # If it's not a symbolic link then it's not a home-manager file
