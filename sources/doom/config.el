@@ -125,6 +125,12 @@
           ("n" "work note" entry
            (file "notes.org")
            "* %?\n%u" :prepend t)
+          ("a" "agenda" entry
+           (file "agenda-personal.org")
+           "* %?" :prepend t)
+          ("b" "bookmark" entry
+           (file "bookmarks.org")
+           "* %?\n%u" :prepend t)
           ("l" "elm note" entry
            (file "elm.org")
            "* %?\n%u" :prepend t)
