@@ -89,6 +89,11 @@ cd doomemacs/bin
 ./doom install
 ./doom sync
 ```
+Some cases may require creating a swap file if not partition was set. If so declare it in `hardware-configuration.nix` for the specific host.
+Set the size as big as available RAM in order to be able to hibernate.
+```
+sudo dd if=/dev/zero of=/swap-file count=36000 bs=1M
+```
 
 ## Build
 
