@@ -316,6 +316,7 @@
     hledger-web
 
     # Misc
+    gnome.gnome-screenshot
     gnumeric
     spotify
     telegram-desktop
