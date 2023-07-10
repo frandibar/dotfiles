@@ -329,7 +329,11 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # Set natural scroll
+# Find trackpad id with `xinput --list` and property with `xinput list-props <touchpad id>`
+# Elan touchpad for Asus ROG
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
+# "DLL0945:00 06CB:CDE6 Touchpad" for Dell XPS
+exec --no-startup-id xinput set-prop "DLL0945:00 06CB:CDE6 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # For keybase filesystem to mount
 exec --no-startup-id kbfsfuse
