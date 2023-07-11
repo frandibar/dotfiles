@@ -8,7 +8,6 @@
   #
   imports = [
       ./home.nix
-      ./keybase.nix
       ./ledger-nano.nix
       ./syncthing.nix
     ];
@@ -316,6 +315,7 @@
     hledger-web
 
     # Misc
+    graphviz
     gnome.gnome-screenshot
     gnumeric
     spotify

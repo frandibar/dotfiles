@@ -209,7 +209,7 @@
   (setq magit-save-repository-buffers 'dontask))
 
 (use-package deft
-  :config (setq deft-directory "~/keybase/deft"
+  :config (setq deft-directory "~/Sync/keybase/deft"
                 deft-recursive t
                 ;; deft-recursive-ignore-dir-regexp "amor"
                 deft-extensions '("org")
