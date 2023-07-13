@@ -73,6 +73,9 @@ else:
     elif state == "Unknown":
         fulltext = FA_QUESTION + " " + FA_BATTERY + " "
         timeleft = ""
+    elif state == "Not charging":
+        fulltext = FA_PLUG + " "
+        timeleft = ""
     else:
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
@@ -102,5 +105,5 @@ else:
 
 print(fulltext)
 print(fulltext)
-if percentleft < 10:
+if percentleft < 10 and state_batteries[0] not in ["Full", "Not charging"]:
     exit(33)
