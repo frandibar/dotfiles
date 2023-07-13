@@ -4,6 +4,15 @@
 
 ;;;###autoload
 
+(defun frandibar/increment-integer-at-point (amount-to-add)
+  (interactive "p")
+  (save-excursion
+    (skip-chars-backward "0-9")
+    (or (looking-at "[0-9]+")
+        (error "No number at point"))
+    (replace-match (number-to-string (+ amount-to-add (string-to-number (match-string 0))))))
+  )
+
 ;; Preferably redefine this function without dependency to evil
 (defun frandibar/yank-whole-line (number-of-lines)
   "Yank NUMBER-OF-LINES lines."
