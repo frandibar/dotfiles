@@ -72,12 +72,14 @@ volume() {
 format() {
   
   perl_filter='if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)'
-  perl_filter+='{CORE::say $4 eq "off" ? "MUTE" : "'
+  # perl_filter+='{CORE::say $4 eq "off" ? "MUTE" : "'
+  perl_filter+='{CORE::say $4 eq "off" ? "$1 MUTE" : "'
   # If dB was selected, print that instead
   perl_filter+=$([[ $STEP = *dB ]] && echo '$3' || echo '$1')
   perl_filter+='"; exit}'
   output=$(perl -ne "$perl_filter")
-  echo "$LABEL$output"
+  # echo "$LABEL$output"
+  echo "$output"
 }
 
 #------------------------------------------------------------------------
@@ -88,5 +90,18 @@ case $BLOCK_BUTTON in
   5) amixer $AMIXER_PARAMS -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
 esac
 
-volume | format
-
+# WARNING: the following code was adapted by me to use FontAwesome instead of
+# relying on the label, in order to change it depending the the volume level.
+# This will not work as expected (untested) if level is expressed in dB.
+muted=$(volume | format | cut -d " " -f 2)
+level=$(volume | format | cut -d " " -f 1)
+if [ $muted = "MUTE" ]; then
+    label=$(python3 -c "print('<span font=\'FontAwesome\'>\uf026</span>')")
+else
+  if ((${level:0:1} < 5 )); then
+    label=$(python3 -c "print('<span font=\'FontAwesome\'>\uf027</span>')")
+  else
+    label=$(python3 -c "print('<span font=\'FontAwesome\'>\uf028</span>')")
+  fi
+fi
+echo "$label" "$level"
