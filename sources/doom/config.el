@@ -222,6 +222,7 @@
   :config
   (setq ledger-reports
         '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")
+          ("income-vs-expenses" "%(binary) bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")
           ("expenses-this-month" "%(binary) bal expense --period %(month) --current --sort amount")
           ("expenses-with-tag" "%(binary) reg expense --current --limit 'has_tag(/mytag/)'")
           ("balance-stablecoins" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
