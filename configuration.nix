@@ -131,6 +131,7 @@
     file-roller # archive manager
     geary       # email client
     seahorse    # password manager
+    gnome-calculator
     gnome-clocks
     gnome-contacts
     gnome-logs
@@ -142,7 +143,6 @@
     # eog         # image viewer
     # baobab      # disk usage analyzer
     # gnome-font-viewer
-    # gnome-calculator
     # gnome-calendar
     # gnome-maps
     # gnome-characters
@@ -314,6 +314,9 @@
     hledger-ui
     hledger-web
 
+    # Calculator
+    qalculate-gtk
+    libqalculate      # qalc
     # Misc
     graphviz
     gnome.gnome-screenshot
