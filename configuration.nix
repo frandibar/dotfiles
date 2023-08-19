@@ -9,6 +9,7 @@
   imports = [
       ./home.nix
       ./ledger-nano.nix
+      ./steam.nix
       ./syncthing.nix
     ];
 
