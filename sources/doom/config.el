@@ -147,9 +147,12 @@
           ("y" "nyxt notes" entry
            (file "nyxt.org")
            "* %?\n%u" :prepend t)
+          ("h" "teatro" entry
+           (file "teatro.org")
+           "* %?\n:PROPERTIES:\n:fecha:\n:teatro:\n:con:\n:END:")
           ("p" "peliculas" entry
            (file+headline "peliculas.org" "Peliculas Vistas")
-           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
+           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:" :prepend t)))
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "PROJ(p)" "HOLD(h)" "IDEA(i)" "READ(r)" "|" "DONE(d)" "KILL(k)")
