@@ -152,7 +152,7 @@
            "* %?\n:PROPERTIES:\n:fecha:\n:teatro:\n:con:\n:END:")
           ("p" "peliculas" entry
            (file+headline "peliculas.org" "Peliculas Vistas")
-           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:" :prepend t)))
+           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "PROJ(p)" "HOLD(h)" "IDEA(i)" "READ(r)" "|" "DONE(d)" "KILL(k)")

@@ -272,7 +272,7 @@
     chromium
 
     # Programming
-    emacs
+    emacs29
     emacsPackages.dired-fdclone
     # These fonts are used by Doom Emacs
     # Unfortunately `doom doctor` still reports them as missing
@@ -318,6 +318,8 @@
     # Calculator
     qalculate-gtk
     libqalculate      # qalc
+    rofi-calc
+
     # Misc
     graphviz
     gnome.gnome-screenshot
