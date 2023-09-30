@@ -214,6 +214,7 @@
 (use-package deft
   :config (setq deft-directory org-directory
                 deft-recursive t
+                deft-recursive-ignore-dir-regexp "\\(?:\\.\\|\\.\\.\\|attic\\)$"
                 deft-extensions '("org")
                 ;; deft-use-filename-as-title t
 
