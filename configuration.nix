@@ -321,6 +321,7 @@
     rofi-calc
 
     # Misc
+    calibre           # ebook management
     graphviz
     gnome.gnome-screenshot
     gnumeric
