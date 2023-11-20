@@ -25,8 +25,9 @@ If the machine being installed was already configured, then the machine specific
 Create a symlink to the proper configuration and rebuild
 
 ```
-sudo rm /etc/nixos/configuration.nix
+sudo rm /etc/nixos/configuration.nix /etc/nixos/hardware-configuration.nix
 sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 ```
 
 If the machine being installed was never configured, then we must create the configuration files specific to this machine.
@@ -56,16 +57,8 @@ And make a symlink to this file
 sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
 ```
 
-Now that the new configuration is in place, rebuild NixOS
-
-```
-sudo nixos-rebuild switch
-```
-
-Now everything should be configured properly, restart just in case to check everything is working as expected.
-
 Any machine specific fine tuning should be added to the host config.
-
+Now continue with the next section.
 
 ## First time only
 
