@@ -303,6 +303,8 @@
     haskell-language-server
     haskellPackages.hoogle
     sqlite
+    sbcl                    # common lisp
+
     metabase                # data analytics
 
     # Musicsheets
