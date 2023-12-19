@@ -265,6 +265,7 @@
 #   feh            # change background image
 #   flatpak
 #   xorg.xev       # capture keycodes
+    ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
 
     # Internet
     firefox
