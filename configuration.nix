@@ -273,8 +273,14 @@
     chromium
 
     # Programming
+
+    # emacs
     emacs29
     emacsPackages.dired-fdclone
+    html-tidy               # emacs doom doctor
+    nodePackages.stylelint  # emacs doom doctor
+    jsbeautifier            # emacs doom doctor
+    shellcheck              # emacs doom doctor
     # These fonts are used by Doom Emacs
     # Unfortunately `doom doctor` still reports them as missing
     emacsPackages.fontawesome
@@ -286,28 +292,30 @@
     difftastic
     python3Minimal
     python310Packages.gnureadline  # required by icsv2ledger
-    ghc                     # haskell
+
+    jq                      # json query
+    nodejs_20
+    nixfmt                  # nix formatter
+#   meld                    # diffs
+    sqlite
+
+    # elm
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-review
     elmPackages.elm-json
     elmPackages.elm-test
-    jq                      # json query
-    nodejs_20
-    nixfmt                  # nix formatter
-#   meld                    # diffs
-    html-tidy               # emacs doom doctor
-    nodePackages.stylelint  # emacs doom doctor
-    jsbeautifier            # emacs doom doctor
-    shellcheck              # emacs doom doctor
+
+    # haskell
+    ghc
     haskell-language-server
     haskellPackages.hoogle
-    sqlite
+
     sbcl                    # common lisp
 
     metabase                # data analytics
 
-    # Musicsheets
+    # Music sheets
     musescore
     lilypond
     timidity                # midi
