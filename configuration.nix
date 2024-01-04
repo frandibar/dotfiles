@@ -298,6 +298,7 @@
     nixfmt                  # nix formatter
 #   meld                    # diffs
     sqlite
+    sqlitebrowser
 
     # elm
     elmPackages.elm
