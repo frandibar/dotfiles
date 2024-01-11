@@ -228,7 +228,7 @@
         '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")
           ("income-vs-expenses" "%(binary) bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")
           ("expenses-this-month" "%(binary) bal expense --period %(month) --current --sort amount")
-          ("expenses-with-tag" "%(binary) reg expense --current --limit 'has_tag(/mytag/)'")
+          ("expenses-with-tag" "%(binary) reg expense --current --limit 'has_tag(/%(tagvalue)/)'")
           ("balance-stablecoins" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
           ("balance-stablecoins-in-usd" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/' --price-db prices.db --exchange usd")
           ("expenses-pending-this-month" "%(binary) bal expense --period %(month) --uncleared --sort amount")
