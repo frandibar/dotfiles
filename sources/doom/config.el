@@ -31,6 +31,11 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Sync/docs/")
 
+;; Don't show entries scheduled in the future in my todo list.
+;; The idea behind this is that by scheduling it, I don't want to
+;; think about it until the scheduled date.
+(setq org-agenda-todo-ignore-scheduled 'future)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
