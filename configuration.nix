@@ -278,7 +278,7 @@
 
     # Programming
 
-    # emacs
+    # Emacs
     emacs29
     emacsPackages.dired-fdclone
     html-tidy               # emacs doom doctor
@@ -304,14 +304,14 @@
     sqlite
     sqlitebrowser
 
-    # elm
+    # Elm
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-review
     elmPackages.elm-json
     elmPackages.elm-test
 
-    # haskell
+    # Haskell
     ghc
     haskell-language-server
     haskellPackages.hoogle
@@ -336,18 +336,23 @@
     libqalculate      # qalc
     rofi-calc
 
+    # Music
+    spotify
+
+    # Social
+    telegram-desktop
+
     # Misc
     calibre           # ebook management
     graphviz
     gnome.gnome-screenshot
     gnumeric
-    spotify
-    telegram-desktop
     zoom-us
     zathura           # pdf
-    mpv               # video player
     flameshot         # screenshots
     #gnome.sushi      # file preview
+    # Video
+    mpv               # video player
 
     # Dependencies
     yad              # i3blocks calendar
