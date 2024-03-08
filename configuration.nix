@@ -318,8 +318,6 @@
 
     sbcl                    # common lisp
 
-    metabase                # data analytics
-
     # Music sheets
     musescore
     lilypond
@@ -336,6 +334,10 @@
     libqalculate      # qalc
     rofi-calc
 
+    # Image
+    gimp
+    inkscape
+
     # Music
     spotify
 
@@ -351,8 +353,13 @@
     zathura           # pdf
     flameshot         # screenshots
     #gnome.sushi      # file preview
+    kicad-small       # printed circuit board design
+    metabase          # data analytics
+    # godot           # game engine
+
     # Video
     mpv               # video player
+    smplayer          # gui for mpv
 
     # Dependencies
     yad              # i3blocks calendar
