@@ -197,6 +197,7 @@
 
   # Bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
 
   #
@@ -270,6 +271,7 @@
 #   flatpak
 #   xorg.xev       # capture keycodes
     ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
+    networkmanagerapplet  # provides nm-applet for wifi in tray
 
     # Internet
     firefox

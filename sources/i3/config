@@ -346,6 +346,12 @@ exec --no-startup-id kbfsfuse
 # Automount usb drives
 exec --no-startup-id udiskie --automount
 
+# Wifi applet
+exec --no-startup-id nm-applet
+
+# Bluetooth applet
+exec --no-startup-id blueman-applet
+
 # FIXME: not working as expected
 # htop scratchpad
 # for_window [instance="htop_scratchpad"] move to scratchpad, border none
