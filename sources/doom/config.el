@@ -267,3 +267,5 @@
   (setq lsp-enable-symbol-highlighting nil)
   )
 
+;; Sometimes links are opened in the wrong browser. Use firefox always.
+(setq browse-url-browser-function #'browse-url-firefox)
