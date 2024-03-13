@@ -22,6 +22,10 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
+;; Fira Code has ligatures, I want this for prog mode only but this way sets it globally
+;; (setq doom-font "Fira Code-14")
+(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 14.0))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -103,10 +107,6 @@
 ;; FIXME: fix path for NixOS
 (setq load-path (append (list "/usr/share/emacs/site-lisp") load-path))
 (setq LilyPond-pdf-command "zathura")
-
-;; Fira Code has ligatures, I want this for prog mode only but this way sets it globally
-;; (setq doom-font "Fira Code-14")
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 16))
 
 ;; The default behaviour when switching to most recent buffer (SPC `) omits
 ;; buffers that don't have an associated file name.
