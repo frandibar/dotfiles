@@ -330,10 +330,10 @@ bindsym $mod+Ctrl+less    move workspace to output left
 
 focus_follows_mouse yes
 
-# Set keyboard layouts and toggle with Alt+Caps 
-exec --no-startup-id setxkbmap -layout us,es -option 'grp:alt_caps_toggle'
+# Set keyboard layouts and toggle with both shift keys pressed
+exec_always --no-startup-id setxkbmap -layout us,es -option 'grp:shifts_toggle'
 # Switch escape key with caps lock
-exec --no-startup-id setxkbmap -option caps:swapescape
+exec_always --no-startup-id setxkbmap -option caps:swapescape
 
 # In order to show Caps/Num lock status
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
