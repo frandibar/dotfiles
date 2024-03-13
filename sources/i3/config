@@ -303,6 +303,12 @@ for_window [class=".arandr-wrapped" instance=".arandr-wrapped"] floating enable
 for_window [class="gnome-calendar" instance="gnome-calendar"] floating enable
 for_window [class="Qalculate-gtk" instance="qalculate-gtk"] floating enable
 
+# Set focus for some windows
+# focus_on_window_activation smart  # default value
+for_window [class="firefox" instance="Navigator"] focus
+for_window [class="Chromium-browser" instance="chromium-browser"] focus
+for_window [class="Emacs" instance="emacs"] focus
+
 # Multiple displays setup
 set $mode_display Multiple displays (1) One display (2) Two displays (Ret)
 
