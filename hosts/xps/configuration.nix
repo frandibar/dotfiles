@@ -33,4 +33,15 @@
     GDK_DPI_SCALE = "0.5";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
+
+  home-manager.users.frandibar = {
+    # Adjust pointer size on HiDPI
+    home.pointerCursor = {
+      x11.enable = true;
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+      size = 128;
+    };
+  };
+
 }
