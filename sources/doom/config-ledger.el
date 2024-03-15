@@ -10,6 +10,7 @@
           ("expenses-pending-this-month" "%(binary) bal expense --period %(month) --uncleared --sort amount")
           ("unbudgeted-expenses-this-month" "%(binary) bal expense --unbudgeted --monthly --sort amount --period %(month)")
           ("budgeted-ars-next-month" "%(binary) reg assets:cash:ars --budget --period 'next month'")
+          ("servicios-pagados-mes-actual" "%(binary) reg expenses:servicio --cleared --current --period 'this month'")
           ("prices-ccy" "%(binary) prices btc")
           ("bal" "%(binary) bal")
           ("reg" "%(binary) reg")
