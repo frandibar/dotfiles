@@ -19,30 +19,32 @@ i.e. -n1 turns into -n2 when cursor is over 1."
   )
 
 (defun frandibar/yank-whole-line (number-of-lines)
-  "Yank NUMBER-OF-LINES lines."
+  "Yank NUMBER-OF-LINES lines.
+Cursor position in line doesn't matter, includes whole line."
   (interactive "p")
-  (evil-visual-line)
   (save-excursion
     (let ((from (line-beginning-position))
           (to (progn
                 (evil-next-line (- number-of-lines 1))
                 (line-end-position))))
-      (evil-visual-line)
+      (evil-visual-line)                ; necessary to yank whole line
       (evil-yank-line from to)
       (evil-exit-visual-state)
       (message (format "Yanked %s line(s)" number-of-lines))
       )))
 
 (defun frandibar/filename-to-clipboard ()
-  "Copy the current buffer file name to the clipboard.
-Extracted from URL `http://emacsredux.com'."
+  "Copy the current buffer file name to the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
                     (buffer-file-name))))
-    (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
+    (if filename
+        (progn
+         (kill-new filename)
+         (message "Copied '%s' to the clipboard." filename))
+      (error "Buffer is not associated to a file, clipboard left unchanged")))
+  )
 
 ;; (defun frandibar/elm-sort-record ()
 ;;   "Sort an Elm record. NOT FINISHED YET."
