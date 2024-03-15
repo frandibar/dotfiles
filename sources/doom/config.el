@@ -31,15 +31,6 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Sync/docs/")
-
-;; Don't show entries scheduled in the future in my todo list.
-;; The idea behind this is that by scheduling it, I don't want to
-;; think about it until the scheduled date.
-(setq org-agenda-todo-ignore-scheduled 'future)
-
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -99,170 +90,23 @@
 ;; Read code with two panes side by side as if reading a book.
 (add-hook 'prog-mode-hook 'follow-mode)
 
-(autoload 'LilyPond-mode "lilypond-mode")
-(setq auto-mode-alist
-      (cons '("\\.ly$" . LilyPond-mode) auto-mode-alist))
-
-(add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
-;; FIXME: fix path for NixOS
-(setq load-path (append (list "/usr/share/emacs/site-lisp") load-path))
-(setq LilyPond-pdf-command "zathura")
-
 ;; The default behaviour when switching to most recent buffer (SPC `) omits
 ;; buffers that don't have an associated file name.
 ;; Override that by removing the default value doom-non-file-visiting-buffer-p
 (setq doom-unreal-buffer-functions '(minibufferp doom-special-buffer-p))
 
-(setq inferior-lisp-program "sbcl")
 
 
-(use-package org
-  :config
-  (setq org-agenda-files (quote ("cumples.org"
-                                 "todo.org"
-                                 "agenda-personal.org"
-                                 )))
-
-  (setq org-capture-templates
-        '(("t" "work todo" entry
-           (file "todo.org")
-           "* TODO %?\n%i\n%u\n%a" :prepend t)
-          ("n" "work note" entry
-           (file "notes.org")
-           "* %?\n%u" :prepend t)
-          ("a" "agenda" entry
-           (file "agenda-personal.org")
-           "* %?" :prepend t)
-          ("b" "bookmark" entry
-           (file "bookmarks.org")
-           "* %?\n%u" :prepend t)
-          ("l" "elm note" entry
-           (file "elm.org")
-           "* %?\n%u" :prepend t)
-          ("e" "emacs")
-          ("et" "emacs tips" entry
-           (file+headline "emacs.org" "tip")
-           "* %?\n%u" :prepend t)
-          ("eq" "emacs questions" entry
-           (file+headline "emacs.org" "question")
-           "* %?\n%u" :prepend t)
-          ("g" "git notes" entry
-           (file "git.org")
-           "* %?\n%u" :prepend t)
-          ("y" "nyxt notes" entry
-           (file "nyxt.org")
-           "* %?\n%u" :prepend t)
-          ("h" "teatro" entry
-           (file "teatro.org")
-           "* %?\n:PROPERTIES:\n:fecha:\n:teatro:\n:con:\n:END:")
-          ("p" "peliculas" entry
-           (file+headline "peliculas.org" "Peliculas Vistas")
-           "* %?\n:PROPERTIES:\n:Director:\n:Elenco:\n:Año:\n:Genero:\n:Fecha: %u\n:imdb:\n:Origen:\n:END:")))
-
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "PROJ(p)" "HOLD(h)" "IDEA(i)" "READ(r)" "|" "DONE(d)" "KILL(k)")
-          (sequence "[ ](T)" "|" "[X](D)")))
-
-  ;; System locale to use for formatting time values. Make sure that the
-  ;; weekdays in the time stamps of your Org mode files and in the agenda appear
-  ;; in English.
-  (setq system-time-locale "C")
-
-  ;; I want the org clock report expressed in hours, not days
-  (setq org-duration-format 'h:mm)
-
-  ;; Active Babel languages
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((haskell . t)
-     (emacs-lisp . t)))
-
-  ;; Prevent automatic indentation in org mode code blocks
-  ;; https://stackoverflow.com/questions/53469017/org-mode-source-editing-indents-code-after-exiting-source-code-block-editor
-  (setq org-edit-src-content-indentation 0
-        org-src-tab-acts-natively t
-        org-src-preserve-indentation t)
-
-  )
-
-(use-package expand-region
-  :config
-  (evil-global-set-key 'visual (kbd "C-=") 'er/expand-region)
-  (evil-global-set-key 'visual (kbd "C--") 'er/contract-region)
-  )
-
-(use-package elm-mode
-  :config
-  (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
-  ;; (add-hook 'elm-mode-hook 'eglot-ensure)
-  )
-
-;; For js code formatting
-;; (use-package prettier
-;;   :config
-;;   (add-hook 'after-init-hook #'global-prettier-mode))
-
-;; (use-package copilot
-;;   :hook (prog-mode . copilot-mode)
-;;   :bind (:map copilot-completion-map
-;;               ("<tab>" . 'copilot-accept-completion)
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("C-TAB" . 'copilot-accept-completion-by-word)
-;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
-(use-package magit
-  :config
-  ;; Make magit save files when appropriate.
-  ;; Default is t, doom's is nil
-  (setq magit-save-repository-buffers 'dontask))
-
-(use-package deft
-  :config (setq deft-directory org-directory
-                deft-recursive t
-                deft-recursive-ignore-dir-regexp "\\(?:\\.\\|\\.\\.\\|attic\\)$"
-                deft-extensions '("org")
-                ;; deft-use-filename-as-title t
-
-                ;; Don't show summary (and make filtering faster)
-                deft-strip-summary-regexp ".*"
-                ))
-
-(use-package ledger-mode
-  :config
-  (setq ledger-reports
-        '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")
-          ("income-vs-expenses" "%(binary) bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")
-          ("expenses-this-month" "%(binary) bal expense --period %(month) --current --sort amount")
-          ("expenses-with-tag" "%(binary) reg expense --current --limit 'has_tag(/%(tagvalue)/)'")
-          ("balance-stablecoins" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
-          ("balance-stablecoins-in-usd" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/' --price-db prices.db --exchange usd")
-          ("expenses-pending-this-month" "%(binary) bal expense --period %(month) --uncleared --sort amount")
-          ("unbudgeted-expenses-this-month" "%(binary) bal expense --unbudgeted --monthly --sort amount --period %(month)")
-          ("budgeted-ars-next-month" "%(binary) reg assets:cash:ars --budget --period 'next month'")
-          ("prices-ccy" "%(binary) prices btc")
-          ("bal" "%(binary) bal")
-          ("reg" "%(binary) reg")
-          ("payee" "%(binary) reg @%(payee)")
-          ("account" "%(binary) reg %(account)"))))
-
-(use-package frandibar
-  :load-path "~/.config/doom/modules/frandibar"
-  :bind (:map evil-normal-state-map
-              ("Y" . 'frandibar/yank-whole-line)))
-;; Remap Y from evil-yank-line since it doesn't behave as I would expect
-;; I would have expected the following to work, but instead I rely on frandibar/yank-whole-line
-;;
-;; (define-key evil-normal-state-map (kbd "Y") 'evil-collection-magit-yank-whole-line)
-
-
-;; https://github.com/elm-tooling/elm-language-server
-(after! lsp-ui
-  (setq lsp-ui-doc-max-width 100)
-  (setq lsp-ui-doc-max-height 30)
-  (setq lsp-ui-sideline-show-code-actions nil)
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-doc-show-with-cursor nil)
-  (setq lsp-ui-doc-show-with-mouse nil)
-  (setq lsp-lens-enable nil)
-  (setq lsp-enable-symbol-highlighting nil)
-  )
+(add-to-list 'load-path "~/.config/doom")
+(load "config-lilypond.el")
+(load "config-org.el")
+(load "config-expand-region.el")
+(load "config-elm.el")
+(load "config-magit.el")
+(load "config-deft.el")
+(load "config-ledger.el")
+(load "config-frandibar.el")
+;; (load "config-prettier.el")
+;; (load "config-copilot.el")
+(load "config-lsp.el")
+(load "config-sbcl.el")
