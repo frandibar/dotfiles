@@ -1,0 +1,11 @@
+# Trackpad settings
+# Find trackpad id with `xinput --list` and property with `xinput list-props <touchpad id>`
+
+# Set natural scrolling
+exec --no-startup-id xinput set-prop "DLL0945:00 06CB:CDE6 Touchpad" "libinput Natural Scrolling Enabled" 1
+
+# Set trackpad speed
+exec --no-startup-id xinput set-prop "DLL0945:00 06CB:CDE6 Touchpad" "libinput Accel Speed" 0.5
+
+# Adjust scaling factor for HiDPI
+exec --no-startup-id xrandr --output eDP-1 --scale 1

@@ -339,13 +339,6 @@ exec_always --no-startup-id setxkbmap -option caps:swapescape
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
-# Set natural scroll
-# Find trackpad id with `xinput --list` and property with `xinput list-props <touchpad id>`
-# Elan touchpad for Asus ROG
-exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1
-# "DLL0945:00 06CB:CDE6 Touchpad" for Dell XPS
-exec --no-startup-id xinput set-prop "DLL0945:00 06CB:CDE6 Touchpad" "libinput Natural Scrolling Enabled" 1
-
 # For keybase filesystem to mount
 exec --no-startup-id kbfsfuse
 
@@ -371,8 +364,11 @@ exec --no-startup-id blueman-applet
 # exec --no-startup-id alacritty -name terminal_scratchpad
 # bindsym $mod+Shift+t [instance="terminal_scratchpad"] scratchpad show
 
+# Include host specific settings
+include ~/.config/i3/config.host
+
 # Trying out new settings requires rebuilding Nix and restarting i3, this is not
 # fun. Instead we include a non managed local file, write the settings there and
 # once we're happy with the results, we move them here. It doesn't matter if the
 # file doesn't exist, i3 ignores the error.
-include ~/.config/i3/local.conf
+include ~/.config/i3/config.test

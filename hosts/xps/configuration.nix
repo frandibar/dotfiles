@@ -22,7 +22,10 @@
 
   networking.hostName = "xps";
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Unfortunately this doesn't work, i3 fails to load
+  # services.xserver.windowManager.i3.configFile = builtins.getEnv "HOME" + "/.config/i3/config.xps";
+
+  # Enable touchpad support
   services.xserver.libinput.enable = true;
 
   # HiDPI scale fonts

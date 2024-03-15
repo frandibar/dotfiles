@@ -1,0 +1,5 @@
+# Trackpad settings
+# Find trackpad id with `xinput --list` and property with `xinput list-props <touchpad id>`
+
+# Set natural scroll
+exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Natural Scrolling Enabled" 1

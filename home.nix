@@ -42,6 +42,7 @@
         source = ./sources/i3;
         recursive = true;
       };
+      ".config/i3/config.host".source = ./sources/i3/config.${config.networking.hostName};
       ".config/ledger/ledgerrc".source = ./sources/ledgerrc;
       ".config/X11/Xresources".source = ./sources/X11/Xresources;
       ".vimrc".source = ./sources/vimrc;
