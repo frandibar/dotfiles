@@ -5,25 +5,27 @@
 
 ;;; Code:
 
-;;;###autoload
-
 (require 'elm-mode)
 
+;;;###autoload
 (defun mgs/daily-huddle ()
   "Open the daily huddle Zoom link."
   (interactive)
   (browse-url "https://us02web.zoom.us/j/88522231511?pwd=NUNDZmNraGRhRXBiOVcvTDlIOVhIQT09"))
 
+;;;###autoload
 (defun mgs/browse-jira-ticket (ticket-number)
   "Open the Jira ticket with the given TICKET-NUMBER."
   (interactive "n\Ticket number (without prefix): ")
   (browse-url (concat "https://metronomegrowthsystems.atlassian.net/browse/MGS-" (number-to-string ticket-number))))
 
+;;;###autoload
 (defun mgs/browse-pull-requests ()
   "Open the GitHub pull requests page."
   (interactive)
   (browse-url "https://github.com/Metronome-Software/app/pulls"))
 
+;;;###autoload
 (defun mgs/run-tests ()
   "Run elm-test and display results in an org buffer."
   (interactive)
@@ -32,6 +34,7 @@
   (delete-other-windows)
   (mgs/test-to-org))
 
+;;;###autoload
 (defun mgs/test-to-org ()
   "Convert the elm-test output to an org-mode buffer."
   (interactive)
@@ -44,6 +47,7 @@
     (replace-regexp "^\\(TEST RUN FAILED\\)" "* \\1" nil (point-min) (point-max)))
   (org-mode))
 
+;;;###autoload
 (defun mgs/view-org-html-block ()
   "View the current 'org-mode' block as HTML."
   (interactive)
@@ -59,6 +63,7 @@
   (mhtml-mode))
 
 
+;;;###autoload
 (defun mgs/fold-style-blocks ()
   "Fold all html style blocks in the current buffer."
   (interactive)
@@ -67,6 +72,7 @@
     (while (search-forward "<style>" (point-max) t)
       (+fold/close))))
 
+;;;###autoload
 (defun mgs/format-elm-debug-line ()
   "Format the current line as an Elm Debug.log statement."
   (interactive)

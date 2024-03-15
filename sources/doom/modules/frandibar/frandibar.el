@@ -2,8 +2,8 @@
 
 ;;; Code:
 
-;;;###autoload
 
+;;;###autoload
 (defun frandibar/increment-integer-at-point (amount-to-add)
   (interactive "p")
   (save-excursion
