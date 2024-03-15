@@ -26,15 +26,15 @@ Create a symlink to the proper configuration and rebuild
 
 ```
 sudo rm /etc/nixos/configuration.nix /etc/nixos/hardware-configuration.nix
-sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
-sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 ```
 
 If the machine being installed was never configured, then we must create the configuration files specific to this machine.
 
 ```
-mkdir /home/frandibar/github/dotfiles/hosts/<hostname>
-cp /etc/nixos/hardware-configuration.nix /home/frandibar/github/dotfiles/hosts/<hostname>/
+mkdir $HOME/github/dotfiles/hosts/<hostname>
+cp /etc/nixos/hardware-configuration.nix $HOME/github/dotfiles/hosts/<hostname>/
 sudo rm /etc/nixos/configuration.nix
 ```
 
@@ -54,7 +54,7 @@ Create an initial configuration file under `~/github/dotfiles/hosts/<hostname>/c
 
 And make a symlink to this file
 ```
-sudo ln -s /home/frandibar/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
 ```
 
 Any machine specific fine tuning should be added to the host config.
@@ -77,12 +77,12 @@ Checkout Doom Emacs repository
 ```
 cd ~
 git clone git@github.com:doomemacs/doomemacs.git
-ln -s /home/frandibar/doomemacs /home/frandibar/.config/emacs
+ln -s $HOME/doomemacs $HOME/.config/emacs
 cd doomemacs/bin
 ./doom install
 ./doom sync
 ```
-Some cases may require creating a swap file if not partition was set. If so declare it in `hardware-configuration.nix` for the specific host.
+Some cases may require creating a swap file if no partition was set. If so declare it in `hardware-configuration.nix` for the specific host.
 Set the size as big as available RAM in order to be able to hibernate.
 ```
 sudo dd if=/dev/zero of=/swap-file count=36000 bs=1M
