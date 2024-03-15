@@ -336,6 +336,10 @@
     libqalculate      # qalc
     rofi-calc
 
+    # Go
+    gnugo             # play go
+    cgoban            # kgs client, sgf editor
+
     # Image
     gimp
     inkscape
