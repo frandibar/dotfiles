@@ -16,6 +16,8 @@
 (package! keycast)
 (package! copilot :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 (package! slime)
+(package! olivetti)            ; adjust margins for centered text
+(package! org-modern)          ; pretty org
 ;; (package! sly)  ; This is supposed to integrate with nyxt better than slime, but I couldn't get it to work
 
 ;; To install a package directly from a remote git repo, you must specify a
