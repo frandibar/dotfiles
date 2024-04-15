@@ -77,4 +77,8 @@
   (setq org-edit-src-content-indentation 0
         org-src-tab-acts-natively t
         org-src-preserve-indentation t)
-)
+
+  ;; Hide * / _ + ~ markers for emphasis. To edit them simply backspace over them.
+  (setq org-hide-emphasis-markers t)
+
+  )
