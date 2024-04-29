@@ -375,6 +375,8 @@
     iw               # i3blocks wlan
     xkblayout-state  # i3blocks keyboard layout
     ripgrep          # emacs
+    xclip            # emacs-everywhere
+    xorg.xwininfo    # emacs-everywhere
   ];
 
   programs.fish.enable = true;
