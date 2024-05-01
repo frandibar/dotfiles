@@ -296,6 +296,7 @@
 
     git
     difftastic
+    black                   # python formatter
     python3Minimal
     python310Packages.gnureadline  # required by icsv2ledger
 
