@@ -110,3 +110,6 @@
 ;; (load "config-copilot.el")
 (load "config-lsp.el")
 (load "config-sbcl.el")
+
+;; Unfortunately using this method prevents orgzly from displaying them on my cellphone
+;; (load "config-calendar.el")
