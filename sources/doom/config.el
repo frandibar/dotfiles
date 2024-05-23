@@ -95,6 +95,8 @@
 ;; Override that by removing the default value doom-non-file-visiting-buffer-p
 (setq doom-unreal-buffer-functions '(minibufferp doom-special-buffer-p))
 
+;; Prevent warning message when using this function
+(put 'narrow-to-region 'disabled nil)
 
 
 (add-to-list 'load-path "~/.config/doom")
