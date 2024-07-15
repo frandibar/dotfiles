@@ -78,15 +78,6 @@
 (setq global-auto-revert-mode t)
 (setq global-auto-revert-non-file-buffers t)
 
-;; Make dired emulate midnight commander to having two buffers side by side and
-;; moving files between both.
-;; Emacs default is nil, doom's is t.
-(setq dired-dwim-target 'dired-dwim-target-next)
-
-;; By default eshell doesn't scroll to bottom on input
-;; Let's change this.
-(setq eshell-scroll-to-bottom-on-input 'this)
-
 ;; Read code with two panes side by side as if reading a book.
 (add-hook 'prog-mode-hook 'follow-mode)
 
@@ -101,11 +92,13 @@
 
 (add-to-list 'load-path "~/.config/doom")
 (load "config-lilypond.el")
+(load "config-dired.el")
 (load "config-org.el")
 (load "config-expand-region.el")
 (load "config-elm.el")
 (load "config-magit.el")
 (load "config-deft.el")
+(load "config-eshell.el")
 (load "config-ledger.el")
 (load "config-frandibar.el")
 ;; (load "config-prettier.el")
