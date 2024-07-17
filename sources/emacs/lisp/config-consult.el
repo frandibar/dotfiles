@@ -26,6 +26,9 @@
    ([remap project-switch-to-buffer] . consult-project-switch-to-buffer)
    ([remap yank-pop] . consult-yank-pop)
    ([remap goto-line] . consult-goto-line)
+   ([remap occur] . consult-line)
+   ("C-c v r" . consult-ripgrep)
+   ("C-c v h" . consult-org-heading)
 
    :map isearch-mode-map
    ([remap isearch-edit-string] . consult-isearch-history)
@@ -46,8 +49,7 @@
 (use-package embark
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+   ("C-;" . embark-dwim))       ;; good alternative: M-.
 
   :custom
   ;; Optionally replace the key help with a completing-read interface

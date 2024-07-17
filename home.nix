@@ -18,21 +18,15 @@
 
     home.file = {
       ".config/alacritty/alacritty.yml".source = ./sources/alacritty.yml;
-      ".config/doom" = {
-        source = ./sources/doom;
-        recursive = true;
-      };
-      # Commented out as it breaks rebuilds
-      # Instead, do a manual git clone in ~/.config.emacs and use in the traditional non-nix way.
-      # ".config/emacs" = {
-      #   source = pkgs.fetchFromGitHub {
-      #     owner = "doomemacs";
-      #     repo = "doomemacs";
-      #     rev = "master";
-      #     sha256 = "sha256-qAI2FbELXIYDMsgMjn19MhYS9WaOxzpcWrATgQW+RP8=";
-      #   };
+      # Commented out as I'm no longer using doom
+      # ".config/doom" = {
+      #   source = ./sources/doom;
       #   recursive = true;
       # };
+      ".config/emacs" = {
+        source = ./sources/emacs;
+        recursive = true;
+      };
       ".config/fish" = {
         source = ./sources/fish;
         recursive = true;

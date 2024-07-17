@@ -93,10 +93,16 @@
 ;; Enable separation of camel case words.
 (add-hook 'prog-mode-hook 'subword-mode)
 
+;; Follow symlinks, avoid confirmation when opening links to version
+;; controlled files.
+(setq vc-follow-symlinks t)
+
 ;; Use ibuffer instead of list-buffers.
 (use-package ibuffer
   :bind
   ([remap list-buffers] . ibuffer))
+
+(global-set-key (kbd "C-c v <") 'join-line)
 
 ;; Load additional settings
 
@@ -105,11 +111,14 @@
 (load "config-ace-jump.el")
 (load "config-which-key.el")
 (load "config-expand-region.el")
+(load "config-multiple-cursors.el")
+(load "config-zop-to-char.el")
 
 ;; tools
 (load "config-magit.el")
 (load "config-prettier.el")
 (load "config-treemacs.el")
+(load "config-diff-hl.el")
 
 ;; term
 (load "config-eshell.el")
@@ -136,10 +145,18 @@
 (load "config-calendar.el")
 (load "config-deft.el")     ;; must go after config-org
 
+(load "config-lispy.el")    ;; must go after config-org
+
 ;; Set font
 (set-face-attribute 'default nil
 		    :font "Fira Code"
 		    :height 140)
+
+;; Start server so as to be able to use emacsclient
+(unless
+    (and (boundp 'server-process)
+	 (memq (process-status server-process) '(connect listen open run)))
+  (server-start))
 
 (message "Done loading init.el.")
 

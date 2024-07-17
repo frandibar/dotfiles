@@ -8,6 +8,8 @@
 (setq org-agenda-todo-ignore-scheduled 'future)
 
 (use-package org
+  :bind
+  ("C-c v c" . org-capture)
   :config
   (setq org-agenda-files (quote ("cumples.org"
                                  "todo.org"
