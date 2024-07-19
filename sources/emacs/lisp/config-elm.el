@@ -3,8 +3,8 @@
 ;;; Code:
 
 (use-package elm-mode
-  :config
-  (add-hook 'elm-mode-hook 'elm-format-on-save-mode))
+  :hook
+  (elm-mode . elm-format-on-save-mode))
 
 (provide 'config-elm)
 ;;; config-elm.el ends here

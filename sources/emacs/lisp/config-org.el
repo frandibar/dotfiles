@@ -80,16 +80,33 @@
   (org-src-tab-acts-natively t)
   (org-src-preserve-indentation t)
 
-  ;; Hide * / _ + ~ markers for emphasis such as *bold*. To edit them
-  ;; simply backspace over them.
-  (org-hide-emphasis-markers t))
+  ;; On headlines, jump to start/end of headline text
+  (org-special-ctrl-a/e t)
+
+  ;; Don't kill tags on headlines
+  (org-special-ctrl-k t)
+
+  ;; Leave current line intact when adding a heading with C-RET.
+  (org-insert-heading-respect-content t)
+
+  ;; Re-align tags when promoting/demoting
+  (org-auto-align-tags t)
+
+  ;; Add a date when a heading is done.
+  (org-log-done t)
+
+  ;; Don't ask confirmation when running blocks of code.
+  (org-confirm-babel-evaluate nil)
 
   :config
   ;; Active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((haskell . t)
+     (python . t)
      (emacs-lisp . t)))
+
+  )
 
 (provide 'config-org)
 ;;; config-org.el ends here

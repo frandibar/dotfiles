@@ -2,14 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Nice themes:
+;; doom-atom
+;; doom-one
+;; doom-nord
+;; doom-zenburn
 (use-package doom-themes
   :functions doom-themes-treemacs-config
-
-  :custom
-  (doom-themes-treemacs-theme "doom-atom")
-
   :config
-  (load-theme 'doom-one t)
+  (load-theme 'doom-nord t)
   (doom-themes-treemacs-config))
 
 (provide 'config-theme)

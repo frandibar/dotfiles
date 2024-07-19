@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package deft
+  :after config-org
   :custom
   (deft-directory org-directory)
   (deft-recursive t)

@@ -163,11 +163,9 @@
       font-awesome
       dejavu_fonts
       fira-code
-
-      # These fonts are used by Doom Emacs
-      # Unfortunately `doom doctor` still reports them as missing...
-      # Don't use weather-icons as the volume icon in status bar is swapped with a rainy cloud!
+      etBook  # The one used in Edward Tufte's book
       material-design-icons
+      # When using weather-icons the volume icon in status bar is swapped with a rainy cloud :(
       # weather-icons
   ];
 

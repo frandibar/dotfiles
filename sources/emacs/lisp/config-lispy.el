@@ -2,11 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Cool lisp editing
+;; Cool lisp editing.
 (use-package lispy
   :functions lispy-mode
   :hook
-  (emacs-lisp-mode . (lambda () (lispy-mode 1))))
+  (emacs-lisp-mode . lispy-mode))
 
 (provide 'config-lispy)
 ;;; config-lispy.el ends here

@@ -6,6 +6,28 @@
 
 (add-to-list 'load-path "~/.config/emacs/lisp/")
 
+;; Setup package manager straight.el as replacement for default
+;; package.el
+;; https://github.com/radian-software/straight.el
+;; Bootstrap straight.el.
+(setq straight-use-package-by-default t)
+(defvar bootstrap-version)
+
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 ;; Ask for confirmation when closing Emacs.
 (setq confirm-kill-emacs 'y-or-n-p)
 
@@ -29,27 +51,6 @@
 
 ;; Disable startup screen
 (setq inhibit-startup-screen t)
-
-;; Setup package manager straight.el as replacement for default package.el
-;; https://github.com/radian-software/straight.el
-;; Bootstrap straight.el.
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-(setq straight-use-package-by-default t)
 
 ;; Disable backup files
 (setq make-backup-files nil)
@@ -80,13 +81,24 @@
 ;; controlled files.
 (setq vc-follow-symlinks t)
 
+;; Delete trialing whitespaces before saving a file.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Enable winner mode to be able to restore window configuratinos with
 ;; C-<left> and C-<right>.
 (winner-mode 1)
 
+;; When opening a file, jump to location when last visited.
+(save-place-mode 1)
+
+;; I miss vim's J command.
 (global-set-key (kbd "C-c v <") 'join-line)
 
 ;; Load additional settings
+
+;; app
+(load "config-calendar.el")
+(load "config-deft.el")
 
 ;; emacs
 (load "config-ace-window.el")
@@ -96,6 +108,7 @@
 (load "config-expand-region.el")
 (load "config-multiple-cursors.el")
 (load "config-zop-to-char.el")
+(load "config-ligatures.el")
 
 ;; tools
 (load "config-magit.el")
@@ -103,6 +116,7 @@
 (load "config-treemacs.el")
 (load "config-diff-hl.el")
 (load "config-flycheck.el")
+(load "config-undo-tree.el")
 
 ;; term
 (load "config-eshell.el")
@@ -120,16 +134,12 @@
 (load "config-sbcl.el")
 (load "config-markdown.el")
 (load "config-ledger.el")
+(load "config-lispy.el")
 
 ;; ui
 (load "config-theme.el")
 (load "config-modeline.el")
-
-;; app
-(load "config-calendar.el")
-(load "config-deft.el")     ;; must go after config-org
-
-(load "config-lispy.el")    ;; must go after config-org
+(load "config-org-appearance.el")
 
 ;; Set font
 (set-face-attribute 'default nil
@@ -141,6 +151,11 @@
     (and (boundp 'server-process)
 	 (memq (process-status server-process) '(connect listen open run)))
   (server-start))
+
+;; Use password manager pass from emacs.
+;; This must go after starting the server or it gives error:
+;; "*scratch* buffer has no process"
+(use-package pass)
 
 (message "Done loading init.el.")
 
