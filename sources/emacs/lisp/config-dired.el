@@ -29,6 +29,7 @@
 
 ;; Add nice colors to dired.
 (use-package diredfl
+  :functions diredfl-global-mode
   :config
   (diredfl-global-mode 1))
 

@@ -6,6 +6,7 @@
 ;; window (area also known as the "gutter"), allows you to jump
 ;; between and revert them selectively.
 (use-package diff-hl
+  :functions global-diff-hl-mode
   :config
   (global-diff-hl-mode 1)
 

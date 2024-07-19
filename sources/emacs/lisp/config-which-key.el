@@ -6,6 +6,7 @@
 ;; following your currently entered incomplete command (a prefix) in a
 ;; popup.
 (use-package which-key
+  :functions which-key-mode
   :config
   (which-key-mode 1))
 

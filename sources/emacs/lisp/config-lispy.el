@@ -4,6 +4,7 @@
 
 ;; Cool lisp editing
 (use-package lispy
+  :functions lispy-mode
   :hook
   (emacs-lisp-mode . (lambda () (lispy-mode 1))))
 

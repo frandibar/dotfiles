@@ -21,7 +21,7 @@
   ;;   r File registers
   ;;   m Bookmarks
   ;;   p Project
-    
+
   (([remap repeat-complex-command] . consult-complex-command)
    ([remap switch-to-buffer] . consult-buffer)
    ([remap switch-to-buffer-other-window] . consult-switch-to-buffer-other-window)
@@ -45,8 +45,9 @@
 
 ;; Adds annotations to minibuffer completions
 (use-package marginalia
+  :functions marginalia-mode
   :config
-  (marginalia-mode))
+  (marginalia-mode 1))
 
 ;; Embark makes it easy to choose a command to run based on what is
 ;; near point, both during a minibuffer completion session and in
@@ -59,7 +60,7 @@
   :custom
   ;; Optionally replace the key help with a completing-read interface
   (prefix-help-command embark-prefix-help-command)
-  
+
   :config
 
   ;; Hide the mode line of the Embark live/completions buffers

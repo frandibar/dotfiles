@@ -144,5 +144,10 @@
 
 (message "Done loading init.el.")
 
+;; Disable flycheck warnings for assignment to free variables
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars)
+;; End:
+
 (provide 'init)
 ;;; init.el ends here

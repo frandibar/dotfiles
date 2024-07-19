@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'org)
 (use-package deft
   :custom
   (deft-directory org-directory)

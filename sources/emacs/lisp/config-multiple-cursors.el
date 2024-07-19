@@ -7,6 +7,7 @@
   ("C-c v m" . mc/edit-lines))
 
 (use-package region-bindings-mode
+  :defines region-bindings-mode-map
   :bind
   (:map region-bindings-mode-map
 	("a" . mc/mark-all-like-this)

@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package flycheck
+  :functions global-flycheck-mode
   :init
   (global-flycheck-mode 1))
 

@@ -3,6 +3,8 @@
 ;;; Code:
 
 (use-package doom-themes
+  :functions doom-themes-treemacs-config
+
   :custom
   (doom-themes-treemacs-theme "doom-atom")
 

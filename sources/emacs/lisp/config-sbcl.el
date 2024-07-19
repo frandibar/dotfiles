@@ -2,7 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq inferior-lisp-program "sbcl")
+(use-package inf-lisp
+  :custom
+  (inferior-lisp-program "sbcl"))
+
 
 (provide 'config-sbcl)
 ;;; config-sbcl.el ends here

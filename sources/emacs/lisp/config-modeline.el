@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package doom-modeline
+  :functions doom-modeline-mode
   :init
   (doom-modeline-mode 1))
 
