@@ -1,6 +1,12 @@
+;;; config-eshell.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 (use-package eshell
-  :config
+  :custom
   ;; By default eshell doesn't scroll to bottom on input.
   ;; Make it scroll for the selected window only.
-  (setq eshell-scroll-to-bottom-on-input 'this))
+  (eshell-scroll-to-bottom-on-input 'this))
 
+(provide 'config-eshell)
+;;; config-eshell.el ends here

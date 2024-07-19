@@ -1,3 +1,8 @@
+;;; config-consult.el --- -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;;; Code:
+
 ;; Consult provides search and navigation commands based on the Emacs
 ;; completion function completing-read. Completion allows you to
 ;; quickly select an item from a list of candidates.
@@ -36,7 +41,7 @@
    :map minibuffer-local-map
    ([remap next-matching-history-element] . consult-history)
    ([remap previous-matching-history-element] . consult-history)
-  ))
+   ))
 
 ;; Adds annotations to minibuffer completions
 (use-package marginalia
@@ -67,3 +72,10 @@
 (use-package embark-consult
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+;; Edit Occur buffers in place for editing multiple matches in only
+;; one place.
+(use-package wgrep)
+
+(provide 'config-consult)
+;;; config-consult.el ends here

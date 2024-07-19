@@ -1,8 +1,14 @@
+;;; config-magit.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 (use-package magit
-  :config
-  ;; Make magit save files when appropriate.
-  ;; Default is t, doom's is nil
-  (setq magit-save-repository-buffers 'dontask)
+  :custom
+  ;; Save files without confirmation.
+  (magit-save-repository-buffers 'dontask)
   :bind
   (("C-c v g" . magit-status)))
 
+
+(provide 'config-magit)
+;;; config-magit.el ends here

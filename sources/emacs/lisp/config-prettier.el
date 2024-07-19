@@ -1,4 +1,11 @@
-;; For js code formatting
+;;; config-prettier.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
+;; For js code formatting.
 (use-package prettier
-  :config
-  (add-hook 'after-init-hook #'global-prettier-mode))
+  :hook
+  (after-init . global-prettier-mode))
+
+(provide 'config-prettier)
+;;; config-prettier.el ends here

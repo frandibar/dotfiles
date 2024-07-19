@@ -1,4 +1,6 @@
-;;; config-calendar.el --- Description -*- lexical-binding: t; -*-
+;;; config-calendar.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
 
 ;; Prevent these holidays from appearing in the calendar
 (setq holiday-bahai-holidays nil
@@ -16,7 +18,7 @@
 
 ;; (setq holiday-local-holidays
 ;;       '((holiday-fixed 1 1 "Año nuevo")
-;;         (holiday-float 2 1 2 "Carnaval")
+;;         (holiday-flnfigoat 2 1 2 "Carnaval")
 ;;         (holiday-float 2 2 2 "Carnaval")
 ;;         (holiday-fixed 3 24 "Día nacional de la Memoria por la Verdad y la Justicia")
 ;;         (holiday-fixed 4 2 "Día del Veterano y de los Caídos en la Guerra de Malvinas")
@@ -28,8 +30,9 @@
 ;;         ;; Navidad ya esta incluido en holiday-christian-holidays
 ;;         (holiday-fixed 12 25 "Día nacional de la Memoria por la Verdad y la Justicia")))
 
-(setq org-agenda-include-diary t)
-
+(use-package org
+  :custom
+  (org-agenda-include-diary t))
 
 (provide 'config-calendar)
 ;;; config-calendar.el ends here

@@ -1,4 +1,11 @@
-;; https://github.com/abo-abo/lispy
+;;; config-lispy.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
+;; Cool lisp editing
 (use-package lispy
-  :config
-  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
+  :hook
+  (emacs-lisp-mode . (lambda () (lispy-mode 1))))
+
+(provide 'config-lispy)
+;;; config-lispy.el ends here

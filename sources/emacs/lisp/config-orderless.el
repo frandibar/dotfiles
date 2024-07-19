@@ -1,3 +1,7 @@
+;;; config-orderless.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 ;; This package provides an orderless completion style that divides
 ;; the pattern into space-separated components, and matches candidates
 ;; that match all of the components in any order.
@@ -16,3 +20,6 @@
 
   (completion-styles '(orderless partial-completion basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(provide 'config-orderless)
+;;; config-orderless.el ends here

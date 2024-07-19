@@ -1,12 +1,15 @@
+;;; config-deft.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 (require 'org)
 (use-package deft
-  :config
-  (setq deft-directory org-directory
-        deft-recursive t
-        deft-recursive-ignore-dir-regexp "\\(?:\\.\\|\\.\\.\\|attic\\)$"
-        deft-extensions '("org")
-        ;; deft-use-filename-as-title t
+  :custom
+  (deft-directory org-directory)
+  (deft-recursive t)
+  (deft-recursive-ignore-dir-regexp "\\(?:\\.\\|\\.\\.\\|attic\\)$")
+  (deft-extensions '("org"))
+  (deft-strip-summary-regexp ".*"))
 
-        ;; Don't show summary (and make filtering faster)
-        deft-strip-summary-regexp ".*"
-        ))
+(provide 'config-deft)
+;;; config-deft.el ends here

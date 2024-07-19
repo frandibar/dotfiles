@@ -1,22 +1,5 @@
-;;; early-init.el --- Description -*- lexical-binding: t; -*-
-;;
-;; Copyright (C) 2024 Francisco Dibar
-;;
-;; Author: Francisco Dibar <frandibar@gmail.com>
-;; Maintainer: Francisco Dibar <frandibar@gmail.com>
-;; Created: July 13, 2024
-;; Modified: July 13, 2024
-;; Version: 0.0.1
-;; Keywords: 
-;; Homepage: https://github.com/frandibar/early-init
-;; Package-Requires: ((emacs "29.1"))
-;;
-;; This file is not part of GNU Emacs.
-;;
+;;; early-init.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;
-;;  Description
-;;
 ;;; Code:
 
 ;; Turn off unwanted GUI elements.

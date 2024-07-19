@@ -1,22 +1,5 @@
-;;; init.el --- Description -*- lexical-binding: t; -*-
-;;
-;; Copyright (C) 2024 Francisco Dibar
-;;
-;; Author: Francisco Dibar <frandibar@gmail.com>
-;; Maintainer: Francisco Dibar <frandibar@gmail.com>
-;; Created: July 13, 2024
-;; Modified: July 13, 2024
-;; Version: 0.0.1
-;; Keywords: 
-;; Homepage: https://github.com/frandibar/init
-;; Package-Requires: ((emacs "29.1"))
-;;
-;; This file is not part of GNU Emacs.
-;;
+;;; init.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;
-;;  Description
-;;
 ;;; Code:
 
 (message "Loading my custom init.el...")
@@ -97,16 +80,16 @@
 ;; controlled files.
 (setq vc-follow-symlinks t)
 
-;; Use ibuffer instead of list-buffers.
-(use-package ibuffer
-  :bind
-  ([remap list-buffers] . ibuffer))
+;; Enable winner mode to be able to restore window configuratinos with
+;; C-<left> and C-<right>.
+(winner-mode 1)
 
 (global-set-key (kbd "C-c v <") 'join-line)
 
 ;; Load additional settings
 
 ;; emacs
+(load "config-ace-window.el")
 (load "config-dired.el")
 (load "config-ace-jump.el")
 (load "config-which-key.el")
@@ -119,6 +102,7 @@
 (load "config-prettier.el")
 (load "config-treemacs.el")
 (load "config-diff-hl.el")
+(load "config-flycheck.el")
 
 ;; term
 (load "config-eshell.el")
