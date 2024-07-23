@@ -6,11 +6,13 @@
   :defines
   (org-duration-format
    org-agenda-todo-ignore-scheduled
-   org-capture-templates)
+   org-capture-templates
+   fjd_custom-bindings-map)
 
   :bind
-  ("C-c v a" . org-agenda)
-  ("C-c v c" . org-capture)
+  (:map fjd_custom-bindings-map
+	("C-c v a" . org-agenda)
+	("C-c v c" . org-capture))
 
   :custom
 

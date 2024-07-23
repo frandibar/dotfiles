@@ -1,5 +1,10 @@
 ;;; init.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
+
+;; My personal Emacs configuration.  I took inspiration from many
+;; sources, among others:
+;; - https://github.com/SophieBosio
+
 ;;; Code:
 
 (message "Loading my custom init.el...")
@@ -27,6 +32,8 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+(load "fjd_vars.el")
 
 ;; Ask for confirmation when closing Emacs.
 (setq confirm-kill-emacs 'y-or-n-p)
@@ -84,7 +91,7 @@
 ;; Delete trialing whitespaces before saving a file.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Enable winner mode to be able to restore window configuratinos with
+;; Enable winner mode to be able to restore window configurations with
 ;; C-<left> and C-<right>.
 (winner-mode 1)
 
@@ -92,7 +99,7 @@
 (save-place-mode 1)
 
 ;; I miss vim's J command.
-(global-set-key (kbd "C-c v <") 'join-line)
+(define-key fjd_custom-bindings-map (kbd "C-c v <") 'join-line)
 
 ;; Load additional settings
 
@@ -117,6 +124,7 @@
 (load "config-diff-hl.el")
 (load "config-flycheck.el")
 (load "config-undo-tree.el")
+(load "config-helpful.el")
 
 ;; term
 (load "config-eshell.el")
@@ -156,6 +164,11 @@
 ;; This must go after starting the server or it gives error:
 ;; "*scratch* buffer has no process"
 (use-package pass)
+
+(define-minor-mode fjd_custom-bindings-mode
+  "A mode that activates my custom keybindings."
+  :init-value t
+  :keymap fjd_custom-bindings-map)
 
 (message "Done loading init.el.")
 

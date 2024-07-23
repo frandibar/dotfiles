@@ -30,7 +30,7 @@
   (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 
-  (set-face-attribute 'org-block nil            :foreground nil :inherit
+  (set-face-attribute 'org-block nil            :foreground 'unspecified :inherit
 		      'fixed-pitch)
   (set-face-attribute 'org-code nil             :inherit '(shadow fixed-pitch) )
   (set-face-attribute 'org-indent nil           :inherit '(org-hide fixed-pitch))
@@ -77,7 +77,7 @@
   :functions org-bullets-mode
   :after config-theme
   :custom
-  (org-bullets-bullet-list '("◉" "○" "•" "◦"))
+  (org-bullets-bullet-list '("⋄" "○" "◦" "•"))
 
   :hook
   (org-mode . org-bullets-mode))

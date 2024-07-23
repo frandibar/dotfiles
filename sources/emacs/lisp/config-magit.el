@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package magit
+  :defines fjd_custom-bindings-map
   :custom
   ;; Save files without confirmation.
   (magit-save-repository-buffers 'dontask)
@@ -10,8 +11,8 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
   :bind
-  (("C-c v g" . magit-status)))
-
+  (:map fjd_custom-bindings-map
+	(("C-c v g" . magit-status))))
 
 (provide 'config-magit)
 ;;; config-magit.el ends here
