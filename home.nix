@@ -7,8 +7,8 @@
   # Install packages to /etc/profiles instead of ~/.nix-profile
   home-manager.useUserPackages = true;
 
-  # By default, Home Manager uses a private pkgs instance that is 
-  # configured via the home-manager.users.<name>.nixpkgs options. 
+  # By default, Home Manager uses a private pkgs instance that is
+  # configured via the home-manager.users.<name>.nixpkgs options.
   # To instead use the global pkgs that is configured via the system level nixpkgs options, set
   home-manager.useGlobalPkgs = true;
 
@@ -18,15 +18,15 @@
 
     home.file = {
       ".config/alacritty/alacritty.yml".source = ./sources/alacritty.yml;
-      # Commented out as I'm no longer using doom
-      # ".config/doom" = {
-      #   source = ./sources/doom;
+      # I do lot's of tinkering on my emacs config, so better leave
+      # emacs out of home-manager to prevent the burden of rebuilding
+      # for every change, at least until it reaches a stable point.
+      # For emacs to work correctly, create symlinks to lisp
+      # directory, init.el and early-init.el.
+      # ".config/emacs" = {
+      #   source = ./sources/emacs;
       #   recursive = true;
       # };
-      ".config/emacs" = {
-        source = ./sources/emacs;
-        recursive = true;
-      };
       ".config/fish" = {
         source = ./sources/fish;
         recursive = true;
