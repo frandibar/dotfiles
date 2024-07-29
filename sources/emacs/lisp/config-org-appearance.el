@@ -22,6 +22,10 @@
   ;; Use 0 to leave one space after heading for tags.
   (org-tags-column -80)
 
+  ;; Display UTF characters for entries such as \alpha. Use M-TAB to
+  ;; autocomplete.
+  (org-pretty-entities t)
+
   :init
 
   ;; Used monospaced fonts for tables and checkboxes.
@@ -29,17 +33,19 @@
   ;; FIXME: the color of the checkbox is same as text after this.
   (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
-
-  (set-face-attribute 'org-block nil            :foreground 'unspecified :inherit
-		      'fixed-pitch)
-  (set-face-attribute 'org-code nil             :inherit '(shadow fixed-pitch) )
-  (set-face-attribute 'org-indent nil           :inherit '(org-hide fixed-pitch))
-  (set-face-attribute 'org-verbatim nil         :inherit '(shadow fixed-pitch) )
-  (set-face-attribute 'org-special-keyword nil  :inherit '(font-lock-comment-face
-							   fixed-pitch))
-  (set-face-attribute 'org-meta-line nil        :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-checkbox nil         :inherit 'fixed-pitch)
-
+  (set-face-attribute 'org-block nil
+		      :foreground 'unspecified
+		      :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil
+		      :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-indent nil
+		      :inherit '(org-hide fixed-pitch))
+  (set-face-attribute 'org-verbatim nil
+		      :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil
+		      :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil
+		      :inherit '(font-lock-comment-face fixed-pitch))
 
   (let* ((variable-tuple
 	  (cond ((x-list-fonts "ETBembo") '(:font "ETBembo"))

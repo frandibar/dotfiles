@@ -3,6 +3,11 @@
 ;;; Code:
 
 (use-package ledger-mode
+  :after fjd
+  :defines fjd_update-cash
+  :hook
+  (ledger-mode . (lambda () (add-hook 'after-save-hook 'fjd_update-cash nil t)))
+
   :custom
   (ledger-reports
    '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")

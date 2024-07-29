@@ -22,8 +22,9 @@
   system.stateVersion = "23.05"; # Did you read the comment?
 
   # Keep the system up to date (https://nixos.org/manual/nixos/stable/#sec-upgrading)
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = false;
+  # I'm keeping this commented out to prevent any breaking changes.
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.allowReboot = false;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -128,12 +129,11 @@
   environment.gnome.excludePackages = with pkgs.gnome; [
     cheese      # photo booth
     epiphany    # web browser
-    gedit       # text editor
+    pkgs.gedit  # text editor
     simple-scan # document scanner
     totem       # video player
     yelp        # help viewer
     evince      # document viewer
-    file-roller # archive manager
     geary       # email client
     seahorse    # password manager
     gnome-calculator
@@ -279,14 +279,13 @@
     # Programming
 
     # Emacs
-    emacs29
+    emacs
     emacsPackages.dired-fdclone
     html-tidy               # emacs doom doctor
     nodePackages.stylelint  # emacs doom doctor
     jsbeautifier            # emacs doom doctor
     shellcheck              # emacs doom doctor
     # These fonts are used by Doom Emacs
-    # Unfortunately `doom doctor` still reports them as missing
     emacsPackages.fontawesome
     emacsPackages.octicons
     emacsPackages.all-the-icons
@@ -304,6 +303,7 @@
 #   meld                    # diffs
     sqlite
     sqlitebrowser
+    nodePackages.prettier
 
     # Elm
     elmPackages.elm
@@ -342,6 +342,7 @@
     # Image
     gimp
     inkscape
+    imagemagick       # used by emacs casual suite
 
     # Music
     spotify
@@ -353,6 +354,7 @@
     calibre           # ebook management
     graphviz
     gnome.gnome-screenshot
+    gnome.file-roller # zip files
     gnumeric
     zoom-us
     zathura           # pdf
@@ -384,4 +386,14 @@
     enable = true;
     # enableSSHSupport = true;
   };
+
+  # To install and enable the systemd user service for Emacs daemon.
+  # Right now I prefer to get the server lauched when running my first
+  # emacs instance, so I'm commenting this line.
+  # services.emacs.enable = true;
+
+  # Set emacsclient as default editor.
+  # FIXME: this is not being honored, $EDITOR = vim
+  services.emacs.defaultEditor = true;
+
 }

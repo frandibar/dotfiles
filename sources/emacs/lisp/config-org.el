@@ -11,8 +11,8 @@
 
   :bind
   (:map fjd_custom-bindings-map
-	("C-c v a" . org-agenda)
-	("C-c v c" . org-capture))
+	("C-c v o a" . org-agenda)
+	("C-c v o c" . org-capture))
 
   :custom
 

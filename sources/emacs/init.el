@@ -75,9 +75,6 @@
 ;; Make minibuffer history persistent.
 (savehist-mode t)
 
-;; Enable recent files mode.
-(recentf-mode 1)
-
 ;; Use trash can when deleting
 (setq delete-by-moving-to-trash t)
 
@@ -101,11 +98,23 @@
 ;; I miss vim's J command.
 (define-key fjd_custom-bindings-map (kbd "C-c v <") 'join-line)
 
+;; Enable recent files mode.
+(use-package recentf
+  :custom
+  (recentf-max-menu-items 100)
+  (recentf-max-saved-items 100)
+
+  :config
+  (recentf-mode 1))
+
 ;; Load additional settings
+
+(load "fjd.el")
 
 ;; app
 (load "config-calendar.el")
 (load "config-deft.el")
+(load "config-elfeed.el")
 
 ;; emacs
 (load "config-ace-window.el")
@@ -125,6 +134,7 @@
 (load "config-flycheck.el")
 (load "config-undo-tree.el")
 (load "config-helpful.el")
+(load "config-casual.el")
 
 ;; term
 (load "config-eshell.el")

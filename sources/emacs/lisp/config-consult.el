@@ -34,15 +34,15 @@
 	 ([remap goto-line] . consult-goto-line)
 	 ([remap occur] . consult-line)
 	 ("C-c v r" . consult-ripgrep)
-	 ("C-c v h" . consult-org-heading)
+	 ("C-c v o h" . consult-org-heading))
 
-	 :map isearch-mode-map
-	 ([remap isearch-edit-string] . consult-isearch-history)
+	:map isearch-mode-map
+	([remap isearch-edit-string] . consult-isearch-history)
 
-	 :map minibuffer-local-map
-	 ([remap next-matching-history-element] . consult-history)
-	 ([remap previous-matching-history-element] . consult-history)
-	 )))
+	:map minibuffer-local-map
+	([remap next-matching-history-element] . consult-history)
+	([remap previous-matching-history-element] . consult-history)
+	))
 
 ;; Adds annotations to minibuffer completions
 (use-package marginalia
