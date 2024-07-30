@@ -94,24 +94,23 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
-  services.xserver.libinput.touchpad.naturalScrolling = false;
+  services.libinput.touchpad.naturalScrolling = false;
 
   #
   # i3 Setup
   #
   # Extracted from https://nixos.wiki/wiki/I3
   environment.pathsToLink = [ "/libexec" ];
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
-
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
 
-    displayManager.defaultSession = "none+i3";
     displayManager.gdm.enable = true;          # for screen lock from gnome
 
     windowManager.i3.enable = true;
@@ -159,7 +158,7 @@
   #
   # FONTS
   #
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
       font-awesome
       dejavu_fonts
       fira-code
@@ -299,7 +298,7 @@
 
     jq                      # json query
     nodejs_20
-    nixfmt                  # nix formatter
+    nixfmt-classic          # nix formatter
 #   meld                    # diffs
     sqlite
     sqlitebrowser

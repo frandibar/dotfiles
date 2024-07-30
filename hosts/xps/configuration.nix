@@ -26,7 +26,7 @@
   # services.xserver.windowManager.i3.configFile = builtins.getEnv "HOME" + "/.config/i3/config.xps";
 
   # Enable touchpad support
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # HiDPI scale fonts
   # Extracted from https://nixos.wiki/wiki/Xorg

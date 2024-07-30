@@ -17,7 +17,7 @@
     home.stateVersion = "23.05";
 
     home.file = {
-      ".config/alacritty/alacritty.yml".source = ./sources/alacritty.yml;
+      ".config/alacritty/alacritty.toml".source = ./sources/alacritty.toml;
       # I do lot's of tinkering on my emacs config, so better leave
       # emacs out of home-manager to prevent the burden of rebuilding
       # for every change, at least until it reaches a stable point.
