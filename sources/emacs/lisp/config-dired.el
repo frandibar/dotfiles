@@ -1,4 +1,4 @@
-;;; config-dired.el --- -*- lexical-binding: t; -*-
+;;; config-dired.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

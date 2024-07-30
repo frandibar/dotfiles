@@ -1,4 +1,4 @@
-;;; config-magit.el --- -*- lexical-binding: t; -*-
+;;; config-magit.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-ledger.el --- -*- lexical-binding: t; -*-
+;;; config-ledger.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

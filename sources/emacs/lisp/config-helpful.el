@@ -1,4 +1,4 @@
-;;; config-helpful.el --- -*- lexical-binding: t; -*-
+;;; config-helpful.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-consult.el --- -*- lexical-binding: t; -*-
+;;; config-consult.el --- -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;;; Code:

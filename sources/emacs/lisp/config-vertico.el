@@ -1,4 +1,4 @@
-;;; config-vertico.el --- -*- lexical-binding: t; -*-
+;;; config-vertico.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

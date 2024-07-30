@@ -1,4 +1,4 @@
-;;; config-eshell.el --- -*- lexical-binding: t; -*-
+;;; config-eshell.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

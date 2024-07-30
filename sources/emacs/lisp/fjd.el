@@ -1,4 +1,4 @@
-;;; fjd.el --- -*- lexical-binding: t; -*-
+;;; fjd.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

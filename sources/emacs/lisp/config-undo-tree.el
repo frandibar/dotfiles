@@ -1,4 +1,4 @@
-;;; config-undo-tree.el --- -*- lexical-binding: t; -*-
+;;; config-undo-tree.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

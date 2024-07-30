@@ -1,4 +1,4 @@
-;;; config-lispy.el --- -*- lexical-binding: t; -*-
+;;; config-lispy.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-prettier.el --- -*- lexical-binding: t; -*-
+;;; config-prettier.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

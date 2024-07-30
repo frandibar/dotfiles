@@ -1,4 +1,4 @@
-;;; config-zop-to-char.el --- -*- lexical-binding: t; -*-
+;;; config-zop-to-char.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

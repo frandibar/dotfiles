@@ -1,4 +1,4 @@
-;;; config-deft.el --- -*- lexical-binding: t; -*-
+;;; config-deft.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

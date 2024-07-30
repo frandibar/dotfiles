@@ -1,4 +1,4 @@
-;;; config-multiple-cursors.el --- -*- lexical-binding: t; -*-
+;;; config-multiple-cursors.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-ace-jump.el --- -*- lexical-binding: t; -*-
+;;; config-ace-jump.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-orderless.el --- -*- lexical-binding: t; -*-
+;;; config-orderless.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-nix.el --- -*- lexical-binding: t; -*-
+;;; config-nix.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

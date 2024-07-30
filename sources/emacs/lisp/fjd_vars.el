@@ -1,4 +1,4 @@
-;;; fjd_vars.el --- -*- lexical-binding: t; -*_
+;;; fjd_vars.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

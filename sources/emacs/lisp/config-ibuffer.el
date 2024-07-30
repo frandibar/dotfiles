@@ -1,4 +1,4 @@
-;;; config-ibuffer.el --- -*- lexical-binding: t; -*-
+;;; config-ibuffer.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

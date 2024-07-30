@@ -1,4 +1,4 @@
-;;; config-ligatures.el --- -*- lexical-binding: t; -*-
+;;; config-ligatures.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

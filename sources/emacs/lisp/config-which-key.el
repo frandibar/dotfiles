@@ -1,4 +1,4 @@
-;;; config-which-key.el --- -*- lexical-binding: t; -*-
+;;; config-which-key.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

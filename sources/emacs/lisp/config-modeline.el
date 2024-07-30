@@ -1,4 +1,4 @@
-;;; config-modeline.el --- -*- lexical-binding: t; -*-
+;;; config-modeline.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

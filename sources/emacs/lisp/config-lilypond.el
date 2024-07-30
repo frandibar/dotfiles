@@ -1,4 +1,4 @@
-;;; config-lilypond.el --- -*- lexical-binding: t; -*-
+;;; config-lilypond.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

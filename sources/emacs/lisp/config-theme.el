@@ -1,4 +1,4 @@
-;;; config-theme.el --- -*- lexical-binding: t; -*-
+;;; config-theme.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

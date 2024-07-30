@@ -1,4 +1,4 @@
-;;; config-ace-window.el --- -*- lexical-binding: t; -*-
+;;; config-ace-window.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

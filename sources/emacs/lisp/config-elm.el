@@ -1,4 +1,4 @@
-;;; config-elm.el --- -*- lexical-binding: t; -*-
+;;; config-elm.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

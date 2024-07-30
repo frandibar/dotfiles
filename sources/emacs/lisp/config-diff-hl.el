@@ -1,4 +1,4 @@
-;;; config-diff-hl.el --- -*- lexical-binding: t; -*-
+;;; config-diff-hl.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-calendar.el --- -*- lexical-binding: t; -*-
+;;; config-calendar.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

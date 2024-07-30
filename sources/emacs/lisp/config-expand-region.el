@@ -1,4 +1,4 @@
-;;; config-expand-region.el --- -*- lexical-binding: t; -*-
+;;; config-expand-region.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

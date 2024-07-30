@@ -1,4 +1,4 @@
-;;; config-markdown.el --- -*- lexical-binding: t; -*-
+;;; config-markdown.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; config-casual.el --- -*- lexical-binding: t; -*-
+;;; config-casual.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

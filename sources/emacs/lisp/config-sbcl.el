@@ -1,4 +1,4 @@
-;;; config-sbcl.el --- -*- lexical-binding: t; -*-
+;;; config-sbcl.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

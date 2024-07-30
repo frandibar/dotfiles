@@ -1,4 +1,4 @@
-;;; config-org-appearance.el --- -*- lexical-binding: t; -*-
+;;; config-org-appearance.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; init.el --- -*- lexical-binding: t; -*-
+;;; init.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; My personal Emacs configuration.  I took inspiration from many
@@ -114,9 +114,9 @@
 ;; app
 (load "config-calendar.el")
 (load "config-deft.el")
-(load "config-elfeed.el")
-
 ;; emacs
+
+(load "config-elfeed.el")
 (load "config-ace-window.el")
 (load "config-dired.el")
 (load "config-ace-jump.el")
