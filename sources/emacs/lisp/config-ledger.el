@@ -4,11 +4,19 @@
 
 (use-package ledger-mode
   :after fjd
-  :defines fjd_update-cash
+  :defines fjd_update-cash fjd_custom-bindings-map
+  :bind
+  (:map fjd_custom-bindings-map
+	(("C-c v l c" . ledger-mode-clean-buffer)))
   :hook
   (ledger-mode . (lambda () (add-hook 'after-save-hook 'fjd_update-cash nil t)))
+  (ledger-report-mode . hl-line-mode)
 
   :custom
+  ;; Add empty line after copying a transaction
+  (ledger-copy-transaction-insert-blank-line-after t)
+  (ledger-schedule-file "~/Sync/ledger/main-schedule.ledger")
+
   (ledger-reports
    '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")
      ("income-vs-expenses" "%(binary) bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")

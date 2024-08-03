@@ -50,7 +50,7 @@
 ;; Add closing pair for parenthesis, etc.
 (electric-pair-mode 1)
 
-;; Prevent creation of lockfiles to avoid editing collisions
+;; Prevent creation of lockfiles to avoid editing collisions.
 (setq create-lockfiles nil)
 
 ;; Mute annoying bell
@@ -69,8 +69,8 @@
 
 ;; By default, buffers are not updated when changed on disk.
 ;; Make auto revert automatic.
-(setq global-auto-revert-mode t)
 (setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode 1)
 
 ;; Make minibuffer history persistent.
 (savehist-mode t)
@@ -95,8 +95,10 @@
 ;; When opening a file, jump to location when last visited.
 (save-place-mode 1)
 
-;; I miss vim's J command.
-(define-key fjd_custom-bindings-map (kbd "C-c v <") 'join-line)
+;; Emulate vim's J command.
+(define-key fjd_custom-bindings-map (kbd "C-c v J") 'join-line)
+;; Emulate vim's Y command.
+(define-key fjd_custom-bindings-map (kbd "C-c v Y") 'fjd_current-line-to-kill-ring)
 
 ;; Enable recent files mode.
 (use-package recentf
@@ -114,6 +116,7 @@
 ;; app
 (load "config-calendar.el")
 (load "config-deft.el")
+
 ;; emacs
 
 (load "config-elfeed.el")
@@ -143,6 +146,7 @@
 (load "config-vertico.el")
 (load "config-consult.el")
 (load "config-orderless.el")
+(load "config-corfu.el")
 
 ;; languages
 (load "config-org.el")

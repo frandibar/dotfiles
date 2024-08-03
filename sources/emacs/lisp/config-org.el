@@ -2,12 +2,44 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'fjd)
+(require 'org)
+
+(defun fjd_org-which-function ()
+  "Return concatenated string with path to current header.
+
+Each header is truncated to prevent the length from growing too
+big, and concatenated with a separator.
+
+i.e. For the following headlines:
+* One level
+** Level 2|
+
+| represents the cursor => \"One L... > Level 2\""
+  (interactive)
+  (when (eq major-mode 'org-mode)
+    (let ((header-length 8)
+	  (separator " > "))
+      (mapconcat #'(lambda (header) (fjd_truncate-string header header-length))
+		 (org-get-outline-path t)
+		 separator))))
+
+
+(use-package which-func
+  :config
+  ;; Add current heading to modeline.
+  (add-to-list 'which-func-functions 'fjd_org-which-function))
+
+
 (use-package org
   :defines
   (org-duration-format
    org-agenda-todo-ignore-scheduled
    org-capture-templates
    fjd_custom-bindings-map)
+
+  :hook
+  (org-mode . which-function-mode)
 
   :bind
   (:map fjd_custom-bindings-map
@@ -107,8 +139,8 @@
    '((haskell . t)
      (python . t)
      (emacs-lisp . t)))
-
   )
+
 
 (provide 'config-org)
 ;;; config-org.el ends here

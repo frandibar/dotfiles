@@ -6,8 +6,8 @@
   :custom
   (elfeed-feeds '(
 		  ("https://planet.emacslife.com/atom.xml" emacs)
-		  ("https://news.ycombinator.com/rss" news)
-		  ("http://www.marketingyestrategia.com/feed/")
+		  ;; ("https://news.ycombinator.com/rss" news)
+		  ;; ("http://www.marketingyestrategia.com/feed/")
 		  ;; ("https://www.infobae.com/feeds/rss/" noticias)
 		  )))
 
