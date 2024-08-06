@@ -2,12 +2,46 @@
 ;;; Commentary:
 ;;; Code:
 
+
+(defun fjd_ledger-move-xact (direction)
+  "Move current xact upwards or downwards.
+`DIRECTION' can be `up' or `down'."
+  (when (derived-mode-p 'ledger-mode)
+    (let ((begin (car (ledger-navigate-find-element-extents (point))))
+          (end (save-excursion
+                 (ledger-navigate-next-xact-or-directive)
+                 (point))))
+      (progn
+        (kill-region begin end)
+        (cond ((eq direction 'up)
+               (ledger-navigate-prev-xact-or-directive))
+              ((eq direction 'down)
+               (ledger-navigate-next-xact-or-directive))
+              (t (error "Invalid argument value for direction: %s" direction)))
+        (yank)
+        (ledger-navigate-prev-xact-or-directive)))))
+
+
+(defun fjd_ledger-move-xact-down ()
+  "Move current xact downwards."
+  (interactive)
+  (fjd_ledger-move-xact 'down))
+
+
+(defun fjd_ledger-move-xact-up ()
+  "Move current xact upwards."
+  (interactive)
+  (fjd_ledger-move-xact 'up))
+
+
 (use-package ledger-mode
   :after fjd
   :defines fjd_update-cash fjd_custom-bindings-map
   :bind
   (:map fjd_custom-bindings-map
-	(("C-c v l c" . ledger-mode-clean-buffer)))
+        (("C-c v l c" . ledger-mode-clean-buffer))
+        (("C-M-p" . fjd_ledger-move-xact-up))
+        (("C-M-n" . fjd_ledger-move-xact-down)))
   :hook
   (ledger-mode . (lambda () (add-hook 'after-save-hook 'fjd_update-cash nil t)))
   (ledger-report-mode . hl-line-mode)
