@@ -31,6 +31,15 @@ i.e. For the following headlines:
   (add-to-list 'which-func-functions 'fjd_org-which-function))
 
 
+(defun fjd_sort-agenda-entries ()
+  "Sort agenda entries by date desc."
+  (interactive)
+  (when (string-equal (buffer-name) "agenda-personal.org")
+    (save-excursion
+      (beginning-of-buffer)
+      (org-sort-entries nil ?T))))
+
+
 (use-package org
   :defines
   (org-duration-format
@@ -44,6 +53,7 @@ i.e. For the following headlines:
   :bind
   (:map fjd_custom-bindings-map
 	("C-c v o a" . org-agenda)
+	("C-c v o ." . org-timestamp-inactive)
 	("C-c v o c" . org-capture))
 
   :custom
@@ -61,6 +71,11 @@ i.e. For the following headlines:
   (org-agenda-files '("cumples.org"
 		      "todo.org"
 		      "agenda-personal.org"))
+
+  ;; Quick tag editing
+  ;; Leaving this commented out so I know where to change when I need
+  ;; it.
+  ;; (org-tag-alist '(("emacs" . ?e)))
 
   (org-capture-templates '(("t" "work todo" entry
 			    (file "todo.org")

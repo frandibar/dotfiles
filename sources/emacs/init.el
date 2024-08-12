@@ -84,6 +84,8 @@
 ;; Follow symlinks, avoid confirmation when opening links to version
 ;; controlled files.
 (setq vc-follow-symlinks t)
+;; But...I'm not even using vc at all.
+(setq vc-handled-backends nil)
 
 ;; Delete trialing whitespaces before saving a file.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -95,8 +97,6 @@
 ;; When opening a file, jump to location when last visited.
 (save-place-mode 1)
 
-;; Emulate vim's J command.
-(define-key fjd_custom-bindings-map (kbd "C-c v J") 'join-line)
 ;; Emulate vim's Y command.
 (define-key fjd_custom-bindings-map (kbd "C-c v Y") 'fjd_current-line-to-kill-ring)
 
@@ -138,6 +138,11 @@
 (load "config-undo-tree.el")
 (load "config-helpful.el")
 (load "config-casual.el")
+
+;; Only enable when doing an emacs screencast.
+;; (use-package keycast
+;;   :config
+;;   (keycast-log-mode 1))
 
 ;; term
 (load "config-eshell.el")

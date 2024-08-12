@@ -34,6 +34,7 @@
 	 ([remap goto-line] . consult-goto-line)
 	 ([remap occur] . consult-line)
 	 ("C-c v r" . consult-ripgrep)
+	 ("C-c v o d" . consult-org-agenda)
 	 ("C-c v o h" . consult-org-heading))
 
 	:map isearch-mode-map
