@@ -122,7 +122,7 @@
 (load "config-elfeed.el")
 (load "config-ace-window.el")
 (load "config-dired.el")
-(load "config-ace-jump.el")
+(load "config-avy.el")
 (load "config-which-key.el")
 (load "config-expand-region.el")
 (load "config-multiple-cursors.el")
