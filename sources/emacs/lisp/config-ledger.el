@@ -2,22 +2,33 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'cl-lib)
+
 
 (defun fjd_ledger-move-xact (direction)
   "Move current xact upwards or downwards.
 `DIRECTION' can be `up' or `down'."
-  (when (derived-mode-p 'ledger-mode)
-    (let ((begin (car (ledger-navigate-find-element-extents (point))))
-          (end (save-excursion
-                 (ledger-navigate-next-xact-or-directive)
-                 (point))))
+
+  (unless (derived-mode-p 'ledger-mode)
+    (user-error "Not in a ledger-mode buffer"))
+
+  (let ((begin (car (ledger-navigate-find-element-extents (point))))
+	(end (save-excursion
+	       (ledger-navigate-next-xact-or-directive)
+	       (point)))
+	(cursor-off-bounds
+	 (cl-reduce #'eq
+		    (ledger-navigate-find-element-extents (point)))))
+    (if cursor-off-bounds
+	;; This happens when point is on an empty line between posts.
+	(message "Nothing selected.")
       (progn
         (kill-region begin end)
         (cond ((eq direction 'up)
-               (ledger-navigate-prev-xact-or-directive))
-              ((eq direction 'down)
-               (ledger-navigate-next-xact-or-directive))
-              (t (error "Invalid argument value for direction: %s" direction)))
+	       (ledger-navigate-prev-xact-or-directive))
+	      ((eq direction 'down)
+	       (ledger-navigate-next-xact-or-directive))
+	      (t (error "Invalid argument value for direction: %s" direction)))
         (yank)
         (ledger-navigate-prev-xact-or-directive)))))
 

@@ -1,0 +1,29 @@
+Name: at_bottom
+Point-Char: |
+=-=
+2010/12/01 * Checking balance
+  Assets:Checking                  $ 1,000.00
+  Equity:Opening Balances
+
+2010/12/02 * Organic Co-op
+  Expenses:Food:Groceries             $ 37.50  ; [=2011/01/01]
+  Assets:Checking                    $ -37.50
+
+2010/12/03 * Organic Co-op
+  Expenses:Food:Groceries    |         $ 50.10
+  Assets:Checking                    $ -50.10
+
+=-=
+2010/12/01 * Checking balance
+  Assets:Checking                  $ 1,000.00
+  Equity:Opening Balances
+
+|2010/12/03 * Organic Co-op
+  Expenses:Food:Groceries             $ 50.10
+  Assets:Checking                    $ -50.10
+
+2010/12/02 * Organic Co-op
+  Expenses:Food:Groceries             $ 37.50  ; [=2011/01/01]
+  Assets:Checking                    $ -37.50
+
+=-=-=

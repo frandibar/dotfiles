@@ -112,6 +112,7 @@
 ;; Load additional settings
 
 (load "fjd.el")
+(load "ert-helpers.el")
 
 ;; app
 (load "config-calendar.el")

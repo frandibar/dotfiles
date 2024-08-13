@@ -1,0 +1,30 @@
+Name: flet0
+
+=-=
+(cl-flet ((bla (x) (* x x))) (bla 42))
+=-=
+(cl-flet ((bla (x) (* x x))) (bla 42))
+=-=-=
+Name: flet2
+
+=-=
+(cl-flet ((bla (x)
+(* x x)))
+(bla 42))
+=-=
+(cl-flet ((bla (x)
+	    (* x x)))
+  (bla 42))
+=-=-=
+
+Name: defun
+
+=-=
+(defun x ()
+  (print (quote ( thingy great
+                  stuff))))
+=-=
+(defun x ()
+  (print (quote ( thingy great
+                  stuff))))
+=-=-=
