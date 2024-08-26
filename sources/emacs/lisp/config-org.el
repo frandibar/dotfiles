@@ -39,6 +39,9 @@ i.e. For the following headlines:
       (beginning-of-buffer)
       (org-sort-entries nil ?T))))
 
+;(require 'org-babel)
+;(require 'org-babel-init)
+;(require 'org-babel-gnuplot)
 
 (use-package org
   :defines
@@ -70,6 +73,7 @@ i.e. For the following headlines:
 
   (org-agenda-files '("cumples.org"
 		      "todo.org"
+		      "casa.org"
 		      "agenda-personal.org"))
 
   ;; Quick tag editing
@@ -153,8 +157,13 @@ i.e. For the following headlines:
    'org-babel-load-languages
    '((haskell . t)
      (python . t)
+     (lisp . t)
+     (gnuplot . t)
      (emacs-lisp . t)))
   )
+
+
+(use-package gnuplot)
 
 
 (provide 'config-org)

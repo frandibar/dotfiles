@@ -316,6 +316,7 @@
     haskell-language-server
     haskellPackages.hoogle
 
+    # Lisp
     sbcl                    # common lisp
 
     # Music sheets
@@ -362,6 +363,7 @@
     kicad-small       # printed circuit board design
     metabase          # data analytics
     # godot           # game engine
+    gnuplot
 
     # Video
     mpv               # video player
