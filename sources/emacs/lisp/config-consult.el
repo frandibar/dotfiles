@@ -33,6 +33,7 @@
 	 ([remap yank-pop] . consult-yank-pop)
 	 ([remap goto-line] . consult-goto-line)
 	 ([remap occur] . consult-line)
+	 ("C-c v b" . consult-global-mark)
 	 ("C-c v r" . consult-ripgrep)
 	 ("C-c v o d" . consult-org-agenda)
 	 ("C-c v o h" . consult-org-heading))
