@@ -146,7 +146,7 @@
 ;;   (keycast-log-mode 1))
 
 ;; term
-(load "config-eshell.el")
+(load "config-terminal.el")
 
 ;; completion
 (load "config-vertico.el")
@@ -159,10 +159,9 @@
 (load "config-lilypond.el")
 (load "config-nix.el")
 (load "config-elm.el")
-(load "config-sbcl.el")
+(load "config-lisp.el")
 (load "config-markdown.el")
 (load "config-ledger.el")
-(load "config-lispy.el")
 
 ;; ui
 (load "config-theme.el")

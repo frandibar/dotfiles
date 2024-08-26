@@ -1,4 +1,4 @@
-;;; config-eshell.el --- -*- lexical-binding: t -*-
+;;; config-terminal.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -8,5 +8,12 @@
   ;; Make it scroll for the selected window only.
   (eshell-scroll-to-bottom-on-input 'this))
 
-(provide 'config-eshell)
-;;; config-eshell.el ends here
+
+;; Play nice with nix-shell.
+(use-package direnv
+  :config
+  (direnv-mode 1))
+
+
+(provide 'config-terminal)
+;;; config-terminal.el ends here
