@@ -109,6 +109,13 @@
   :config
   (recentf-mode 1))
 
+;; Ask to save desktop when exiting
+(use-package emacs
+  :hook
+  (kill-emacs . (lambda () (if (y-or-n-p "Save desktop?")
+                          (desktop-save (expand-file-name user-emacs-directory) t)))))
+
+
 ;; Load additional settings
 
 (load "fjd.el")
