@@ -158,6 +158,7 @@ i.e. For the following headlines:
    '((haskell . t)
      (python . t)
      (lisp . t)
+     (shell . t)
      (gnuplot . t)
      (emacs-lisp . t)))
   )
