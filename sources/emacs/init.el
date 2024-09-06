@@ -100,6 +100,11 @@
 ;; Emulate vim's Y command.
 (define-key fjd_custom-bindings-map (kbd "C-c v Y") 'fjd_current-line-to-kill-ring)
 
+;; Switch to previous buffer
+(define-key fjd_custom-bindings-map (kbd "C-c v j o") 'mode-line-other-buffer)
+;; And also provide a shorter key combination as it's frequently used.
+(define-key fjd_custom-bindings-map (kbd "C-`") 'mode-line-other-buffer)
+
 ;; Enable recent files mode.
 (use-package recentf
   :custom
