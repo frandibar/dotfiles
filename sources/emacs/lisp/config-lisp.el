@@ -9,6 +9,7 @@
 (use-package lispy
   :functions lispy-mode
   :hook
+  (lisp-mode . lispy-mode)
   (emacs-lisp-mode . lispy-mode))
 
 
