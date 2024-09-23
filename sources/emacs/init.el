@@ -124,6 +124,7 @@
 ;; Load additional settings
 
 (load "fjd.el")
+(load "stolen.el")
 (load "ert-helpers.el")
 
 ;; app
