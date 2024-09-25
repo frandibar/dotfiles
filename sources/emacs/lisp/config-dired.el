@@ -24,6 +24,9 @@
 ;; Revert without asking.
 (setq dired-autorevert-buffer #'dired-buffer-stale-p)
 
+;; Hide details.
+(add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+
 ;; Show human readable files sizes.
 (setq dired-listing-switches "-l --all --human-readable --group-directories-first")
 
