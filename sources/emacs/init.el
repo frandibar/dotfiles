@@ -120,6 +120,8 @@
   (kill-emacs . (lambda () (if (y-or-n-p "Save desktop?")
                           (desktop-save (expand-file-name user-emacs-directory) t)))))
 
+;; Don't show the tab bar when using tab-bar-mode.
+(setq tab-bar-show nil)
 
 ;; Load additional settings
 
