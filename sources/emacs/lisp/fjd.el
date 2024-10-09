@@ -92,6 +92,14 @@ This function could be a shell script but I prefer living in Emacs."
 	fjd_mv-facturas--yy-mm-to-filename)))
 
 
+(defun fjd_insert-google-maps-link ()
+  "Insert a Google Maps link to the place that is marked as a
+region."
+  (interactive)
+  (when (use-region-p)
+    (insert (concat "\n[[https://www.google.com/maps/place/"
+		    (string-replace " " "+" (buffer-substring (region-beginning) (region-end)))
+		    "][mapa]]\n"))))
 
 (provide 'fjd)
 ;;; fjd.el ends here
