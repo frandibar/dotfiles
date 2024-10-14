@@ -4,6 +4,9 @@
 
 (use-package multiple-cursors
   :defines fjd_custom-bindings-map
+  :custom
+  (mc/always-repeat-command t)
+
   :bind
   (:map fjd_custom-bindings-map
 	("C-c v m" . mc/edit-lines)))
