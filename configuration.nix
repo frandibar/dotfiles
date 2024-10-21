@@ -338,6 +338,7 @@
     # Go
     gnugo             # play go
     cgoban            # kgs client, sgf editor
+    sgfutils          # utils such as sgfcheck
 
     # Image
     gimp
