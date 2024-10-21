@@ -318,6 +318,8 @@
 
     # Lisp
     sbcl                    # common lisp
+    rlwrap                  # rlwrap sbcl for arrow keys to work in repl
+    cl-launch               # run lisp scripts
 
     # Music sheets
     musescore
