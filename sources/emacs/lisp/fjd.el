@@ -93,13 +93,29 @@ This function could be a shell script but I prefer living in Emacs."
 
 
 (defun fjd_insert-google-maps-link ()
-  "Insert a Google Maps link to the place that is marked as a
-region."
+  "Insert a Google Maps link.
+Link gets inserted after the marked region."
   (interactive)
   (when (use-region-p)
-    (insert (concat "\n[[https://www.google.com/maps/place/"
-		    (string-replace " " "+" (buffer-substring (region-beginning) (region-end)))
-		    "][mapa]]\n"))))
+    (save-excursion
+      ;; Make sure the insertion goes after the region.
+      (when (< (point) (region-end))
+	(exchange-point-and-mark))
+      (insert (concat "\n[[https://www.google.com/maps/place/"
+		      (string-replace " " "+"
+				      (buffer-substring (region-beginning)
+							(region-end)))
+		      "][mapa]]")))))
+
+
+(defun fjd_lispy-format-buffer ()
+  "Format each sexp in buffer using `special-lispy-tab'."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (lispy-forward 1)
+      (special-lispy-tab))))
+
 
 (provide 'fjd)
 ;;; fjd.el ends here
