@@ -7,7 +7,9 @@
 ;; code font in order to use ligatures.
 (use-package fira-code-mode
   :hook
-  (prog-mode . fira-code-mode))
+  (prog-mode . fira-code-mode)
+  :custom
+  (fira-code-mode-disabled-ligatures '("x")))
 
 (provide 'config-ligatures)
 ;;; config-ligatures.el ends here
