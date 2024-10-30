@@ -132,18 +132,20 @@
 ;; app
 (load "config-calendar.el")
 (load "config-deft.el")
+(load "config-elfeed.el")
 
 ;; emacs
-
-(load "config-elfeed.el")
 (load "config-ace-window.el")
 (load "config-dired.el")
 (load "config-avy.el")
-(load "config-which-key.el")
-(load "config-expand-region.el")
-(load "config-multiple-cursors.el")
-(load "config-zop-to-char.el")
 (load "config-ligatures.el")
+(load "config-which-key.el")
+
+;; editing
+(load "config-multiple-cursors.el")
+(load "config-expand-region.el")
+(load "config-zop-to-char.el")
+(load "config-surround.el")
 
 ;; tools
 (load "config-magit.el")
