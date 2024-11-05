@@ -7,6 +7,9 @@
   # NIX
   #
   imports = [
+      ./i3.nix
+      ./hyprland.nix
+      ./emacs.nix
       ./home.nix
       ./ledger-nano.nix
       ./steam.nix
@@ -101,27 +104,6 @@
 
   services.libinput.touchpad.naturalScrolling = false;
 
-  #
-  # i3 Setup
-  #
-  # Extracted from https://nixos.wiki/wiki/I3
-  environment.pathsToLink = [ "/libexec" ];
-  services.displayManager.defaultSession = "none+i3";
-  services.xserver = {
-    desktopManager.xterm.enable = false;
-    desktopManager.gnome.enable = true;
-
-    displayManager.gdm.enable = true;          # for screen lock from gnome
-
-    windowManager.i3.enable = true;
-    windowManager.i3.extraPackages = with pkgs; [
-        dmenu     # application launcher most people use
-        i3status  # gives you the default i3 status bar
-        i3lock    # default i3 screen locker
-        i3blocks  # if you are planning on using i3blocks over i3status
-    ];
-  };
-
   # Exclude gnome utilities
   # If we don't want any utility we can use this instead of naming each one.
   # services.gnome.core-utilities.enable = false;
@@ -144,13 +126,13 @@
     pkgs.gnome-connections
 
     # We'll keep these...
-    # eog         # image viewer
-    # baobab      # disk usage analyzer
+    # eog                     # image viewer
+    # baobab                  # disk usage analyzer
     # gnome-font-viewer
     # gnome-calendar
-    # gnome-maps
+    # gnome-maps              # maps
     # gnome-characters
-    # gnome-screenshot
+    # gnome-screenshot        # Not working in wayland
     # gnome-system-monitor
     # gnome-disk-utility
   ];
@@ -232,7 +214,8 @@
     fish
     curl
     wget
-    alacritty      # terminal
+#   alacritty      # terminal
+    kitty          # terminal
     procs          # alternative to ps
     fd             # alternative to find
 #   nushell
@@ -260,7 +243,6 @@
     direnv         # load env depending on current dir
     htop           # alternative to top
     brightnessctl  # adjust brightness
-    libnotify      # provides notify-send for toasts
     gnumake
 #   atool          # deal with zip files
 #   pstree         # alternative to ps
@@ -268,7 +250,7 @@
 #   flatpak
 #   xorg.xev       # capture keycodes
     ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
-    networkmanagerapplet  # provides nm-applet for wifi in tray
+    nix-index      # search in nix store
 
     # Internet
     firefox
@@ -345,7 +327,6 @@
     # Image
     gimp
     inkscape
-    imagemagick       # used by emacs casual suite
 
     # Music
     spotify
@@ -361,7 +342,6 @@
     gnumeric
     zoom-us
     zathura           # pdf
-    flameshot         # screenshots
     #gnome.sushi      # file preview
     kicad-small       # printed circuit board design
     metabase          # data analytics
@@ -371,17 +351,6 @@
     # Video
     mpv               # video player
     smplayer          # gui for mpv
-
-    # Dependencies
-    yad              # i3blocks calendar
-    xdotool          # i3blocks calendar
-    dunst            # notifications
-    acpi             # i3blocks battery
-    iw               # i3blocks wlan
-    xkblayout-state  # i3blocks keyboard layout
-    ripgrep          # emacs
-    xclip            # emacs-everywhere
-    xorg.xwininfo    # emacs-everywhere
   ];
 
   programs.fish.enable = true;
@@ -390,14 +359,5 @@
     enable = true;
     # enableSSHSupport = true;
   };
-
-  # To install and enable the systemd user service for Emacs daemon.
-  # Right now I prefer to get the server lauched when running my first
-  # emacs instance, so I'm commenting this line.
-  # services.emacs.enable = true;
-
-  # Set emacsclient as default editor.
-  # FIXME: this is not being honored, $EDITOR = vim
-  services.emacs.defaultEditor = true;
 
 }

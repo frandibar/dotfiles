@@ -17,6 +17,12 @@ CONFIG=~/.config
 SRC=~/github/dotfiles/sources
 
 files=(
+    "swayidle/config"
+    "swaylock/config"
+    "wlogout/layout"
+    "waybar/config"
+    "waybar/launch.sh"
+    "hyprland/hyprland.conf"
     "doom/config.el"
     "doom/init.el"
     "doom/packages.el"

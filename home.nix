@@ -18,6 +18,7 @@
 
     home.file = {
       ".config/alacritty/alacritty.toml".source = ./sources/alacritty.toml;
+
       # I do lot's of tinkering on my emacs config, so better leave
       # emacs out of home-manager to prevent the burden of rebuilding
       # for every change, at least until it reaches a stable point.
@@ -27,11 +28,22 @@
       #   source = ./sources/emacs;
       #   recursive = true;
       # };
+
       ".config/fish" = {
         source = ./sources/fish;
         recursive = true;
       };
       ".config/git/config".source = ./sources/git/config;
+      # ".config/swayidle/config".source = ./sources/swayidle/config;
+      # ".config/swaylock/config".source = ./sources/swaylock/config;
+      # ".config/waybar" = {
+      #   source = ./sources/waybar;
+      #   recursive = true;
+      # };
+      # ".config/hypr" = {
+      #   source = ./sources/hyprland;
+      #   recursive = true;
+      # };
       ".config/i3" = {
         source = ./sources/i3;
         recursive = true;

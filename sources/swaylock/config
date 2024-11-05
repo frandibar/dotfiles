@@ -1,0 +1,10 @@
+# Swaylock configuration file
+
+show-failed-attempts
+ignore-empty-password
+show-keyboard-layout
+indicator-caps-lock
+scaling=fill
+# This setting doesn't work
+#image=/run/current-sytem/sw/share/hyprland/wall2.png
+image=~/Pictures/hyprland-wall2.png

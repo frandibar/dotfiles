@@ -1,0 +1,7 @@
+# Swayidle configuration file
+
+# After 5 min lock screen
+timeout 300 'swaylock --daemonize'
+
+# After 10 min turn monitors off
+timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
