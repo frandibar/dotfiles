@@ -1,8 +1,7 @@
 # Settings for emacs
-#
-{ pkgs, ... }:
 
-{
+{ pkgs, ... }: {
+
   environment.systemPackages = with pkgs; [
 
     # emacs                 # font looks blurry in wayland

@@ -1,8 +1,7 @@
 # Settings for elm language
-#
-{ pkgs, lib, ... }:
 
-{
+{ pkgs, ... }: {
+
   environment.systemPackages = with pkgs; [
     elmPackages.elm
     elmPackages.elm-format

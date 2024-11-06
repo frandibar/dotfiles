@@ -1,8 +1,7 @@
 # Settings for haskell language
 #
-{ pkgs, lib, ... }:
+{ pkgs, ... }: {
 
-{
   environment.systemPackages = with pkgs; [
     ghc                      # glasgow haskell compiler
     haskell-language-server

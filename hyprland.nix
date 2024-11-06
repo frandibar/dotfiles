@@ -1,8 +1,7 @@
 # Settings for hyprland window manager
 #
-{ pkgs, lib, ... }:
+{ pkgs, ... }: {
 
-{
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;

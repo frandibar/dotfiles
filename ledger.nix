@@ -1,8 +1,7 @@
 # Settings for ledger accounting
-#
-{ pkgs, ... }:
 
-{
+{ pkgs, ... }: {
+
   environment.systemPackages = with pkgs; [
     ledger
     hledger

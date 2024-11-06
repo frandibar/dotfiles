@@ -1,8 +1,7 @@
 # Settings for keybase
-#
-{ pkgs, ... }:
 
-{
+{ pkgs, ... }: {
+
   environment.systemPackages = with pkgs; [
     keybase
     keybase-gui

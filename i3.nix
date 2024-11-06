@@ -1,6 +1,6 @@
 # Settings for i3 window manager
 #
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # i3 Setup

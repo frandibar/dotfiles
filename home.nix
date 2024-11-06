@@ -1,3 +1,5 @@
+# Settings for home manager
+
 { config, pkgs, ... }: {
 
   imports = [
