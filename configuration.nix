@@ -10,10 +10,14 @@
       ./i3.nix
       ./hyprland.nix
       ./emacs.nix
-      ./home.nix
+      ./ledger.nix
       ./ledger-nano.nix
       ./steam.nix
       ./syncthing.nix
+      ./lisp.nix
+      #./haskell.nix
+      #./elm.nix
+      ./home.nix
     ];
 
   # This value determines the NixOS release from which the default
@@ -223,11 +227,10 @@
     fuse
     ntfs3g
     bat            # alternative to cat
-    pass
+    pass           # passwords manager
     killall
     gnupg
     unzip
-    arandr         # multiple monitor setup
     file
     mc             # file browser
     tree
@@ -238,9 +241,9 @@
     tmux           # terminal multiplexer
     tmuxp          # automate terminals
     rm-improved    # rip
-    lxappearance   # change theme icons and fonts
     appimage-run
     direnv         # load env depending on current dir
+    nix-direnv     # faster direnv for nix (addon to direnv)
     htop           # alternative to top
     brightnessctl  # adjust brightness
     gnumake
@@ -251,6 +254,7 @@
 #   xorg.xev       # capture keycodes
     ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
     nix-index      # search in nix store
+    rlwrap         # readline wrap for arrow keys to work in repl such as sbcl, python.
 
     # Internet
     firefox
@@ -259,24 +263,12 @@
 
     # Programming
 
-    # Emacs
-    emacs
-    emacsPackages.dired-fdclone
-    html-tidy               # emacs doom doctor
-    nodePackages.stylelint  # emacs doom doctor
-    jsbeautifier            # emacs doom doctor
-    shellcheck              # emacs doom doctor
-    # These fonts are used by Doom Emacs
-    emacsPackages.fontawesome
-    emacsPackages.octicons
-    emacsPackages.all-the-icons
-    emacsPackages.nerd-icons
+    guix          # package manager required for nyxt devel
 
     git
     difftastic
     black                   # python formatter
     python3Minimal
-    python310Packages.gnureadline  # required by icsv2ledger
 
     jq                      # json query
     nodejs_20
@@ -286,33 +278,10 @@
     sqlitebrowser
     nodePackages.prettier
 
-    # Elm
-    elmPackages.elm
-    elmPackages.elm-format
-    elmPackages.elm-review
-    elmPackages.elm-json
-    elmPackages.elm-test
-
-    # Haskell
-    ghc
-    haskell-language-server
-    haskellPackages.hoogle
-
-    # Lisp
-    sbcl                    # common lisp
-    rlwrap                  # rlwrap sbcl for arrow keys to work in repl
-    cl-launch               # run lisp scripts
-
     # Music sheets
     musescore
     lilypond
     timidity                # midi
-
-    # Ledger accounting
-    ledger
-    hledger
-    hledger-ui
-    hledger-web
 
     # Calculator
     qalculate-gtk
@@ -337,14 +306,13 @@
     # Misc
     calibre           # ebook management
     graphviz
-    gnome.gnome-screenshot
     gnome.file-roller # zip files
     gnumeric
     zoom-us
     zathura           # pdf
     #gnome.sushi      # file preview
-    kicad-small       # printed circuit board design
-    metabase          # data analytics
+    #kicad-small       # printed circuit board design
+    #metabase          # data analytics
     # godot           # game engine
     gnuplot
 
@@ -360,4 +328,6 @@
     # enableSSHSupport = true;
   };
 
+  # Ensure guix daemon can run (for nyxt development).
+  services.guix.enable = true;
 }

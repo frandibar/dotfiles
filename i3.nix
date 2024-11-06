@@ -7,7 +7,7 @@
   #
   # Extracted from https://nixos.wiki/wiki/I3
   environment.pathsToLink = [ "/libexec" ];
-  services.displayManager.defaultSession = "none+i3";
+  # services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
@@ -24,6 +24,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    arandr           # multiple monitor setup
     libnotify        # provides notify-send for toasts
     dunst            # notifications
     networkmanagerapplet  # provides nm-applet for wifi in tray
@@ -33,6 +34,7 @@
     iw               # i3blocks wlan
     xkblayout-state  # i3blocks keyboard layout
     # replaced with grim and slurp
-#    flameshot        # screenshots
+    # flameshot        # screenshots
+    lxappearance   # change theme icons and fonts
   ];
 }

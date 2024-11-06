@@ -20,6 +20,13 @@
   # https://wiki.hyprland.org/Getting-Started/Master-Tutorial/
   environment.variables.NIXOS_OZONE_WL = "1";
 
+  # Nice login screen.
+  services.xserver = {
+    displayManager.gdm.enable = true;   # for screen lock from gnome
+  };
+
+  services.displayManager.defaultSession = "hyprland";
+
   environment.systemPackages = with pkgs; [
     libnotify     # send notifications
     swaynotificationcenter   # provides swaync

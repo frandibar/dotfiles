@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Get the active workspace
-active_workspace=$(hyprctl activeworkspace | grep "ID" | awk '{print $3}')
-
 # Get the name of the next monitor
 monitors=($(hyprctl monitors | grep "Monitor" | awk '{print $2}'))
 current_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
@@ -20,4 +17,4 @@ done
 next_index=$(( (current_index + 1) % ${#monitors[@]} ))
 
 # Move the active workspace to the next monitor
-hyprctl dispatch moveworkspacetomonitor "$active_workspace" "${monitors[$next_index]}"
+hyprctl dispatch movecurrentworkspacetomonitor "${monitors[$next_index]}"

@@ -53,10 +53,18 @@
             //"default": ""
         }
     },
+    // FIXME: Not working
     "keyboard-state": {
-        "numlock": true,
+        "numlock": false,
         "capslock": true,
-        "format": "{name} {icon}",
+	// This seems necessary after swapping caps with esc.
+	// https://github.com/Alexays/Waybar/issues/2890
+        "binding-keys": [1,69,70],
+        //"format": "{name} {icon}",
+	"format": {
+            "numlock": "N {icon}",
+            "capslock": "C {icon}"
+	},
         "format-icons": {
             "locked": "",
             "unlocked": ""
