@@ -30,5 +30,11 @@
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
 
+; adapted from `delete-horizontal-space'
+(defun stolen-delete-horizontal-space-forward ()
+  "*Delete all spaces and tabs after point."
+  (interactive "*")
+  (delete-region (point) (progn (skip-chars-forward " \t") (point))))
+
 (provide 'stolen)
 ;;; stolen.el ends here
