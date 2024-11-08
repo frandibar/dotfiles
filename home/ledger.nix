@@ -2,7 +2,7 @@
 
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     ledger
     hledger
     hledger-ui
@@ -12,6 +12,4 @@
     # https://github.com/quentinsf/icsv2ledger
     python311Packages.gnureadline
   ];
-
-  hardware.ledger.enable = true;
 }

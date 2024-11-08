@@ -1,0 +1,80 @@
+* Dotfiles
+
+My NixOS configuration files. The "experimental" Flakes feature is being used.
+
+Warning: After the migration to flakes the following docs were not thoroughly tested.
+
+** When installing NixOS from scratch
+
+Generate a public key and add it to github:
+
+Generate a key without a passphrase
+#+begin_src shell
+ssh-keygen
+#+end_src
+
+Visit https://github.com/settings/keys and add the contents of
+=~/.ssh/id_rsa.pub=.
+
+Download this git repository:
+#+begin_src shell
+nix-shell -p vim git
+mkdir ~/github
+cd ~/github
+git clone git@github.com:frandibar/dotfiles.git
+#+end_src
+
+If the machine being installed was already configured in the past,
+then the machine specific configuration files are already present in
+this repository.
+
+Create a symlink to the configuration belonging to the host and rebuild:
+#+begin_src shell
+sudo rm /etc/nixos/configuration.nix /etc/nixos/hardware-configuration.nix
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/flake.nix /etc/nixos/flake.nix
+#+end_src
+
+If the machine being installed was never configured in the past, then
+we must create the configuration files specific to this machine:
+#+begin_src shell
+mkdir $HOME/github/dotfiles/hosts/<hostname>
+cp /etc/nixos/hardware-configuration.nix $HOME/github/dotfiles/hosts/<hostname>/
+sudo rm /etc/nixos/configuration.nix
+#+end_src
+
+Create an initial configuration file under
+=~/github/dotfiles/hosts/<hostname>/configuration.nix= containing:
+#+begin_example
+{ config, pkgs, ... }: {
+
+  imports = [
+    ../../configuration.nix
+    ./hardware-configuration.nix
+  ];
+
+  networking.hostName = "<hostname>"
+}
+#+end_example
+
+And make a symlink to this file:
+#+begin_src shell
+sudo ln -s $HOME/github/dotfiles/hosts/<hostname>/configuration.nix /etc/nixos/configuration.nix
+#+end_src
+
+Any machine specific fine tuning should be added to the host config.
+
+** First time only
+
+Create a symlink to =configuration.nix= at =/etc/nixos= so that we don't
+need to specify the file to nix-build explicitly. If not we must run:
+#+begin_src shell
+sudo nixos-rebuild switch -I nixos-config=configuration.nix
+#+end_src
+
+** Build
+
+Whenever a configuration file changes, run:
+#+begin_src shell
+sudo nixos-rebuild switch
+#+end_src

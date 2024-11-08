@@ -7,18 +7,11 @@
   # NIX
   #
   imports = [
-      ./i3.nix
-      ./hyprland.nix
-      ./emacs.nix
-      ./ledger.nix
-      ./ledger-nano.nix
-      ./steam.nix
-      ./syncthing.nix
-      ./lisp.nix
-      #./haskell.nix
-      #./elm.nix
-      ./home.nix
-    ];
+    ./hyprland.nix
+    ./ledger-nano.nix
+    ./syncthing.nix
+    ./nyxt.nix
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -150,8 +143,9 @@
       fira-code
       etBook  # The one used in Edward Tufte's book
       material-design-icons
-      # When using weather-icons the volume icon in status bar is swapped with a rainy cloud :(
-      # weather-icons
+      # When using weather-icons the volume icon in status bar is
+      # swapped with a rainy cloud in i3 :(
+      weather-icons
   ];
 
   #
@@ -232,8 +226,12 @@
     gnupg
     unzip
     file
-    mc             # file browser
     tree
+    htop           # alternative to top
+    brightnessctl  # adjust brightness
+    rlwrap         # readline wrap for arrow keys to work in repl such as sbcl, python.
+
+    mc             # file browser
     tldr           # brief man
     xsel           # copy mouse selection
     openssh
@@ -242,83 +240,6 @@
     tmuxp          # automate terminals
     rm-improved    # rip
     appimage-run
-    direnv         # load env depending on current dir
-    nix-direnv     # faster direnv for nix (addon to direnv)
-    htop           # alternative to top
-    brightnessctl  # adjust brightness
-    gnumake
-#   atool          # deal with zip files
-#   pstree         # alternative to ps
-#   feh            # change background image
-#   flatpak
-#   xorg.xev       # capture keycodes
-    ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
-    nix-index      # search in nix store
-    rlwrap         # readline wrap for arrow keys to work in repl such as sbcl, python.
-
-    # Internet
-    firefox
-    nyxt
-    chromium
-
-    # Programming
-
-    guix          # package manager required for nyxt devel
-
-    git
-    difftastic
-    black                   # python formatter
-    python3Minimal
-
-    jq                      # json query
-    nodejs_20
-    nixfmt-classic          # nix formatter
-#   meld                    # diffs
-    sqlite
-    sqlitebrowser
-    nodePackages.prettier
-
-    # Music sheets
-    musescore
-    lilypond
-    timidity                # midi
-
-    # Calculator
-    qalculate-gtk
-    libqalculate      # qalc
-    rofi-calc
-
-    # Go
-    gnugo             # play go
-    cgoban            # kgs client, sgf editor
-    sgfutils          # utils such as sgfcheck
-
-    # Image
-    gimp
-    inkscape
-
-    # Music
-    spotify
-
-    # Social
-    telegram-desktop
-
-    # Misc
-    calibre           # ebook management
-    graphviz
-    gnome.file-roller # zip files
-    gnumeric
-    zoom-us
-    zathura           # pdf
-    #gnome.sushi      # file preview
-    #kicad-small       # printed circuit board design
-    #metabase          # data analytics
-    # godot           # game engine
-    gnuplot
-
-    # Video
-    mpv               # video player
-    smplayer          # gui for mpv
   ];
 
   programs.fish.enable = true;
@@ -327,7 +248,4 @@
     enable = true;
     # enableSSHSupport = true;
   };
-
-  # Ensure guix daemon can run (for nyxt development).
-  services.guix.enable = true;
 }

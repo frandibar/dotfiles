@@ -2,7 +2,7 @@
 
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     elmPackages.elm
     elmPackages.elm-format
     elmPackages.elm-review

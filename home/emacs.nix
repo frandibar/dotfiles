@@ -2,7 +2,7 @@
 
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
 
     # emacs                 # font looks blurry in wayland
     emacs29-pgtk
