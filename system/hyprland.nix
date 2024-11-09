@@ -21,6 +21,9 @@
 
   # Nice login screen.
   services.xserver = {
+    # Show alternative desktop options just in case...
+    desktopManager.xterm.enable = false;
+    desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;   # for screen lock from gnome
   };
 
