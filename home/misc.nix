@@ -1,8 +1,13 @@
 { pkgs, ... }: {
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
-    direnv         # load env depending on current dir
-    nix-direnv     # faster direnv for nix (addon to direnv)
     gnumake
     ntp            # ntpdate for setting time properly after hibernate lag `sudo ntpdate time.google.com`
     nix-index      # search in nix store

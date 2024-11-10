@@ -23,19 +23,19 @@
 ;; Settings for nyxt development.
 ;; https://github.com/atlas-engineer/nyxt/blob/master/documents/README.org
 (use-package sly
-  :init
-  (load "~/common-lisp/nyxt/build-scripts/nyxt-guix.el" :noerror)
+  ;; :init
+  ;; (load "~/common-lisp/nyxt/build-scripts/nyxt-guix.el" :noerror)
 
-  (setq sly-lisp-implementations
-   '((nyxt-sbcl
-      (lambda () (nyxt-make-guix-cl-for-nyxt
-	     "~/common-lisp/nyxt"
-	     ;; You may set it to t, if you experience odd behavior.
-	     :force nil
-	     :cl-implementation "sbcl"
-	     :cl-system "nyxt/gi-gtk"
-	     :no-grafts t
-	     :ad-hoc '("emacs" "xdg-utils" "git"))))))
+  ;; (setq sly-lisp-implementations
+  ;;  '((nyxt-sbcl
+  ;;     (lambda () (nyxt-make-guix-cl-for-nyxt
+  ;; 	     "~/common-lisp/nyxt"
+  ;; 	     ;; You may set it to t, if you experience odd behavior.
+  ;; 	     :force nil
+  ;; 	     :cl-implementation "sbcl"
+  ;; 	     :cl-system "nyxt/gi-gtk"
+  ;; 	     :no-grafts t
+  ;; 	     :ad-hoc '("emacs" "xdg-utils" "git"))))))
   )
 
 
