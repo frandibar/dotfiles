@@ -96,12 +96,18 @@
 (save-place-mode 1)
 
 ;; Emulate vim's Y command.
-(define-key fjd_custom-bindings-map (kbd "C-c v Y") 'fjd_current-line-to-kill-ring)
+(define-key fjd_custom-bindings-map
+	    (kbd "C-c v Y")
+	    'fjd_current-line-to-kill-ring)
 
 ;; Switch to previous buffer
-(define-key fjd_custom-bindings-map (kbd "C-c v j o") 'mode-line-other-buffer)
+(define-key fjd_custom-bindings-map
+	    (kbd "C-c v j o")
+	    'mode-line-other-buffer)
 ;; And also provide a shorter key combination as it's frequently used.
-(define-key fjd_custom-bindings-map (kbd "C-`") 'mode-line-other-buffer)
+(define-key fjd_custom-bindings-map
+	    (kbd "C-`")
+	    'mode-line-other-buffer)
 
 ;; Enable recent files mode.
 (use-package recentf
@@ -198,6 +204,11 @@
 ;; This must go after starting the server or it gives error:
 ;; "*scratch* buffer has no process"
 (use-package pass)
+
+;; Add keybinding to toggle vertical/horizontal window split
+(define-key fjd_custom-bindings-map
+	    (kbd "C-c v w t")
+	    'stolen-toggle-window-split)
 
 (define-minor-mode fjd_custom-bindings-mode
   "A mode that activates my custom keybindings."
