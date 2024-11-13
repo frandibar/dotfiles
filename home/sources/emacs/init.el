@@ -84,8 +84,6 @@
 ;; Follow symlinks, avoid confirmation when opening links to version
 ;; controlled files.
 (setq vc-follow-symlinks t)
-;; But...I'm not even using vc at all.
-(setq vc-handled-backends nil)
 
 ;; Delete trialing whitespaces before saving a file.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
