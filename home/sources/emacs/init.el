@@ -192,6 +192,11 @@
 ;; Set font
 (set-face-attribute 'default nil
 		    :font "Fira Code"
+		    ;; :font "Maple Mono"
+		    ;; :font "Borg Sans Mono"
+		    ;; :font "NanumGothicCoding"
+		    ;; :font "D2Coding ligature"
+		    ;; :font "Cascadia Code"
 		    :height 140)
 
 ;; Start server so as to be able to use emacsclient
