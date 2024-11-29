@@ -3,4 +3,6 @@
 direnv hook fish | source
 
 # Abbreviations
-abbr -a ec emacsclient --no-wait
+abbr --add ec emacsclient --no-wait
+abbr --add sbcl rlwrap sbcl
+abbr --add python rlwrap python
