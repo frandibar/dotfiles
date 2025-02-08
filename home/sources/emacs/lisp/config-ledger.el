@@ -45,6 +45,31 @@
   (fjd_ledger-move-xact 'up))
 
 
+(defun fjd_toggle-decimal-separator ()
+  "Toggle between ',' and '.' in NUMBER-AS-STRING.
+This function does a dumb char replacement, it does not check
+whether the number is valid."
+  (interactive)
+  (save-excursion
+    (let* ((placeholder "<COMMA-WAS-HERE>")
+	   (start (pos-bol))
+	   (end (pos-eol))
+	   (tmp1 (string-replace "," placeholder (buffer-substring start end)))
+	   (tmp2 (string-replace "." "," tmp1))
+	   (result (string-replace placeholder "." tmp2)))
+      (delete-and-extract-region start end)
+      (insert result))))
+
+
+(defun fjd_ledger-post-edit-amount ()
+  "This is like `ledger-post-edit-amount' but it works with comma as
+decimal separator.  After copying the result in the calc buffer
+with `y' (remember to show grouping with `g d', you should call
+`fjd_toggle-decimal-separator'."
+  (interactive)
+  (fjd_toggle-decimal-separator)
+  (ledger-post-edit-amount))
+
 (use-package ledger-mode
   :after fjd
   :defines fjd_update-cash fjd_custom-bindings-map
@@ -52,7 +77,8 @@
   (:map fjd_custom-bindings-map
         (("C-c v l c" . ledger-mode-clean-buffer))
         (("C-M-p" . fjd_ledger-move-xact-up))
-        (("C-M-n" . fjd_ledger-move-xact-down)))
+        (("C-M-n" . fjd_ledger-move-xact-down))
+	(("C-c C-b" . fjd_ledger-post-edit-amount)))
   :hook
   (ledger-mode . (lambda () (add-hook 'after-save-hook 'fjd_update-cash nil t)))
   (ledger-report-mode . hl-line-mode)
