@@ -8,10 +8,10 @@
   (call-process-shell-command "~/Sync/ledger/cash.sh > ~/Sync/docs/cash.org" nil 0))
 
 
-(defun fjd_truncate-string (string length)
-  "Truncate STRING if longer than LENGTH."
-  (if (> (length string) length)
-      (concat (substring string 0 (- length 1)) "…")
+(defun fjd_truncate-string (string max-length)
+  "Truncate STRING if longer than MAX-LENGTH."
+  (if (> (length string) max-length)
+      (concat (substring string 0 (- max-length 1)) "…")
     string))
 
 
