@@ -151,6 +151,9 @@ i.e. For the following headlines:
   ;; Don't ask confirmation when running blocks of code.
   (org-confirm-babel-evaluate nil)
 
+  ;; Place attachments in dir
+  (org-attach-id-dir ".attach")
+
   :config
   ;; Active Babel languages
   (org-babel-do-load-languages
