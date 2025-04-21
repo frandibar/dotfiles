@@ -17,7 +17,7 @@
 
 ;; Disable default package manager in favor of straight.el
 ;; https://github.com/radian-software/straight.el
-(setq package-enable-at-startup nil)
+(setopt package-enable-at-startup nil)
 
 (provide 'early-init)
 ;;; early-init.el ends here

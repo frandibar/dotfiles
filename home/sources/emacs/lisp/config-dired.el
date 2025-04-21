@@ -6,29 +6,29 @@
 
 ;; Make dired emulate midnight commander to having two buffers side by
 ;; side and moving files between both.
-(setq dired-dwim-target 'dired-dwim-target-next)
+(setopt dired-dwim-target 'dired-dwim-target-next)
 
 ;; Use xdg-open to resolve application to use when opening these files
 ;; types.
-(setq dired-guess-shell-alist-user
-      '(("\\.\\(?:docx\\|pdf\\|djvu\\|eps\\)\\'" "xdg-open")
-      ("\\.\\(?:jpe?g\\|png\\|gif\\|xpm\\)\\'" "xdg-open")
-      ("\\.\\(?:xcf\\)\\'" "xdg-open")
-      ("\\.csv\\'" "xdg-open")
-      ("\\.tex\\'" "xdg-open")
-      ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|rm\\|rmvb\\|ogv\\)\\(?:\\.part\\)?\\'" "xdg-open")
-      ("\\.\\(?:mp3\\|flac\\)\\'" "xdg-open")
-      ("\\.html?\\'" "xdg-open")
-      ("\\.md\\'" "xdg-open")))
+(setopt dired-guess-shell-alist-user
+	'(("\\.\\(?:docx\\|pdf\\|djvu\\|eps\\)\\'" "xdg-open")
+	  ("\\.\\(?:jpe?g\\|png\\|gif\\|xpm\\)\\'" "xdg-open")
+	  ("\\.\\(?:xcf\\)\\'" "xdg-open")
+	  ("\\.csv\\'" "xdg-open")
+	  ("\\.tex\\'" "xdg-open")
+	  ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|rm\\|rmvb\\|ogv\\)\\(?:\\.part\\)?\\'" "xdg-open")
+	  ("\\.\\(?:mp3\\|flac\\)\\'" "xdg-open")
+	  ("\\.html?\\'" "xdg-open")
+	  ("\\.md\\'" "xdg-open")))
 
 ;; Revert without asking.
-(setq dired-autorevert-buffer #'dired-buffer-stale-p)
+(setopt dired-auto-revert-buffer #'dired-buffer-stale-p)
 
 ;; Hide details.
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
 ;; Show human readable files sizes.
-(setq dired-listing-switches "-l --all --human-readable --group-directories-first")
+(setopt dired-listing-switches "-l --all --human-readable --group-directories-first")
 
 ;; Add nice colors to dired.
 (use-package diredfl

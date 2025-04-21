@@ -3,20 +3,19 @@
 ;;; Code:
 
 ;; Prevent these holidays from appearing in the calendar
-(setq holiday-bahai-holidays nil
-      holiday-general-holidays nil
-      holiday-hebrew-holidays nil
-      holiday-islamic-holidays nil
-      holiday-oriental-holidays nil
-      holiday-solar-holidays nil
-      )
+(setopt holiday-bahai-holidays nil
+	holiday-general-holidays nil
+	holiday-hebrew-holidays nil
+	holiday-islamic-holidays nil
+	holiday-oriental-holidays nil
+	holiday-solar-holidays nil)
 
 ;; I would prefer to use the following method, but unfortunately they
 ;; don't appear on Android Orgzly app.  So instead, I declare them in
 ;; a separate org file and comment this out, in case I get it to work
 ;; in the future on Android.
 
-;; (setq holiday-local-holidays
+;; (setopt holiday-local-holidays
 ;;       '((holiday-fixed 1 1 "Año nuevo")
 ;;         (holiday-flnfigoat 2 1 2 "Carnaval")
 ;;         (holiday-float 2 2 2 "Carnaval")

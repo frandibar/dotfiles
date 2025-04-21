@@ -15,7 +15,7 @@
 ;; package.el
 ;; https://github.com/radian-software/straight.el
 ;; Bootstrap straight.el.
-(setq straight-use-package-by-default t)
+(setopt straight-use-package-by-default t)
 (defvar bootstrap-version)
 
 (let ((bootstrap-file
@@ -36,10 +36,10 @@
 (load "fjd_vars.el")
 
 ;; Ask for confirmation when closing Emacs.
-(setq confirm-kill-emacs 'y-or-n-p)
+(setopt confirm-kill-emacs 'y-or-n-p)
 
-(setq user-full-name "Francisco Dibar")
-(setq user-mail-address "frandibar@gmail.com")
+(setopt user-full-name "Francisco Dibar")
+(setopt user-mail-address "frandibar@gmail.com")
 
 ;; Show column position in modeline
 (column-number-mode 1)
@@ -51,39 +51,39 @@
 (electric-pair-mode 1)
 
 ;; Prevent creation of lockfiles to avoid editing collisions.
-(setq create-lockfiles nil)
+(setopt create-lockfiles nil)
 
 ;; Mute annoying bell
-(setq ring-bell-function 'ignore)
+(setopt ring-bell-function 'ignore)
 
 ;; Disable startup screen
-(setq inhibit-startup-screen t)
+(setopt inhibit-startup-screen t)
 
 ;; Disable backup files
-(setq make-backup-files nil)
+(setopt make-backup-files nil)
 
 ;; By default, emacs saves bookmarks to file when exiting
 ;; emacs. Instead I want to save them immediately when they are added,
 ;; to avoid loosing them if emacs crashes.
-(setq bookmark-save-flag 1)
+(setopt bookmark-save-flag 1)
 
 ;; By default, buffers are not updated when changed on disk.
 ;; Make auto revert automatic.
-(setq global-auto-revert-non-file-buffers t)
+(setopt global-auto-revert-non-file-buffers t)
 (global-auto-revert-mode 1)
 
 ;; Make minibuffer history persistent.
 (savehist-mode t)
 
 ;; Use trash can when deleting
-(setq delete-by-moving-to-trash t)
+(setopt delete-by-moving-to-trash t)
 
 ;; Enable separation of camel case words.
 (add-hook 'prog-mode-hook 'subword-mode)
 
 ;; Follow symlinks, avoid confirmation when opening links to version
 ;; controlled files.
-(setq vc-follow-symlinks t)
+(setopt vc-follow-symlinks t)
 
 ;; Delete trialing whitespaces before saving a file.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -125,7 +125,7 @@
                           (desktop-save (expand-file-name user-emacs-directory) t)))))
 
 ;; Don't show the tab bar when using tab-bar-mode.
-(setq tab-bar-show nil)
+(setopt tab-bar-show nil)
 
 ;; Load additional settings
 
