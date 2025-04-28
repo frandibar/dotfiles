@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 
   imports = [
+    ./books.nix
     ./browser.nix
     ./calc.nix
     ./dev.nix
