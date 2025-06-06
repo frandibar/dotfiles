@@ -89,21 +89,51 @@ with `y' (remember to show grouping with `g d', you should call
   (ledger-schedule-file "~/Sync/ledger/main-schedule.ledger")
 
   (ledger-reports
-   '(("assets-in-usd" "%(binary) bal --price-db prices.db asset --current --exchange usd")
-     ("income-vs-expenses" "%(binary) bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")
-     ("expenses-this-month" "%(binary) bal expense --period %(month) --current --sort amount")
-     ("expenses-with-tag" "%(binary) reg expense --current --limit 'has_tag(/%(tagvalue)/)'")
-     ("balance-stablecoins" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
-     ("balance-stablecoins-in-usd" "%(binary) bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/' --price-db prices.db --exchange usd")
-     ("expenses-pending-this-month" "%(binary) bal expense --period %(month) --uncleared --sort amount")
-     ("unbudgeted-expenses-this-month" "%(binary) bal expense --unbudgeted --monthly --sort amount --period %(month)")
-     ("budgeted-ars-next-month" "%(binary) reg assets:cash:ars --budget --period 'next month'")
-     ("servicios-pagados-mes-actual" "%(binary) reg expenses:servicio --cleared --current --period 'this month'")
-     ("prices-ccy" "%(binary) prices btc")
-     ("bal" "%(binary) bal")
-     ("reg" "%(binary) reg")
-     ("payee" "%(binary) reg @%(payee)")
-     ("account" "%(binary) reg %(account)"))))
+   (let ((prefix "%(binary) -f %(ledger-file) "))
+     (mapcar
+      (lambda (pair) (list (car pair) (s-concat prefix (cadr pair))))
+      '(("assets-in-usd"
+	 "bal --price-db prices.db asset --current --exchange usd")
+
+	("income-vs-expenses"
+	 "bal expense income --depth 1 --current --price-db prices.db --exchange usd --period %(month)")
+
+	("expenses-this-month"
+	 "bal expense --period %(month) --current --sort amount")
+
+	("expenses-with-tag"
+	 "reg expense --current --limit 'has_tag(/%(tagvalue)/)'")
+
+	("balance-stablecoins"
+	 "bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/'")
+
+	("balance-stablecoins-in-usd"
+	 "bal asset --sort amount --limit 'commodity=~/^busd$/ or commodity=~/^usdc$/ or commodity=~/^usdp$/ or commodity=~/^usdt$/' --price-db prices.db --exchange usd")
+
+	("expenses-pending-this-month"
+	 "bal expense --period %(month) --uncleared --sort amount")
+
+	("unbudgeted-expenses-this-month"
+	 "bal expense --unbudgeted --monthly --sort amount --period %(month)")
+
+	("budgeted-ars-next-month"
+	 "reg assets:cash:ars --budget --period 'next month'")
+
+	("servicios-pagados-mes-actual"
+	 "reg expenses:servicio --cleared --current --period 'this month'")
+
+	("prices-ccy" "prices btc")
+	("bal" "bal")
+	("reg" "reg")
+	("payee" "reg @%(payee)")
+	("account" "reg %(account)"))))))
+
+
+(when (eq system-type 'windows-nt)
+  ;; Quick & Dirty fix. Don't know why it's not taking `exec-path'
+  ;; into account.
+  (setq ledger-binary-path "C:\\ProgramData\\chocolatey\\bin\\ledger.exe"))
+
 
 (provide 'config-ledger)
 ;;; config-ledger.el ends here

@@ -3,6 +3,7 @@
 ;;; Code:
 
 (require 'fjd)
+(require 'fjd_vars)
 (require 'org)
 
 (defun fjd_org-which-function ()
