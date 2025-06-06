@@ -2,38 +2,41 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package casual-dired
+(use-package casual
+
+  ;; casual-dired
   :functions (casual-dired-tmenu
 	      casual-dired-sort-by-tmenu)
   :defines dired-mode-map
   :bind (:map dired-mode-map
-               ("C-c v c" . 'casual-dired-tmenu)
-               ("s" . 'casual-dired-sort-by-tmenu)))
+              ("C-c v c" . 'casual-dired-tmenu)
+              ("s" . 'casual-dired-sort-by-tmenu))
 
-(use-package casual-calc
+  ;; casual-calc
   :functions casual-calc-tmenu
   :defines calc-mode-map
   :bind (:map calc-mode-map
-              ("C-c v c" . 'casual-calc-tmenu)))
+              ("C-c v c" . 'casual-calc-tmenu))
 
-(use-package casual-info
+  ;; casual-info
   :functions casual-info-tmenu
   :defines Info-mode-map
   :bind (:map Info-mode-map
-              ("C-c v c" . 'casual-info-tmenu)))
+              ("C-c v c" . 'casual-info-tmenu))
 
-(use-package casual-isearch
+  ;; casual-isearch
   :functions casual-isearch-tmenu
   :defines isearch-mode-map
   :bind (:map isearch-mode-map
-              ("C-c v c" . 'casual-isearch-tmenu)))
+              ("C-c v c" . 'casual-isearch-tmenu))
 
-(use-package casual-re-builder
+  ;; casual-re-builder
+  :functions casual-re-builder-tmenu
   :defines reb-mode-map
   :bind (:map reb-mode-map
-              ("C-c v c" . casual-re-builder-tmenu)))
+              ("C-c v c" . casual-re-builder-tmenu))
 
-(use-package casual-bookmarks
+  ;; casual-bookmarks
   :defines bookmark-bmenu-mode-map
   :bind (:map bookmark-bmenu-mode-map
               ("C-c v c" . casual-bookmarks-tmenu)))
