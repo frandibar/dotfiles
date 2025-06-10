@@ -2,10 +2,42 @@
 ;;; Commentary:
 ;;; Code:
 
+;; This function was deprecated in favor of `fjd_generate-cash-org-file'.
 (defun fjd_update-cash ()
   "Update cash.org with the output of cash.sh."
   (interactive)
   (call-process-shell-command "~/Sync/ledger/cash.sh > ~/Sync/docs/cash.org" nil 0))
+
+
+(defun fjd_generate-cash-org-file ()
+  "Generate a ledger balance report from \"main.ledger\" into \"cash.org\"."
+  (interactive)
+  (let* ((ledger-file "~/Sync/ledger/main.ledger")
+	 (command (concat "ledger bal --file " ledger-file
+			  " cash brubank ciudad uala galicia cocos:cleared --current --flat"))
+	 (output-file "~/Sync/docs/cash.org")
+	 (headers (list "#+title: Caja\n"
+			"#+date: "
+			;; #+date: lun 02 jun 2025 14:12:49 -03
+			(format-time-string "%A %B %d %Y %H:%M:%S %z%n")
+			"\nEste archivo se genera automáticamente al grabar main.ledger, NO EDITAR.\n\n"
+			"#+begin_example\n\n"))
+	 (ledger-output (with-temp-buffer
+			  (call-process-shell-command command nil t)
+			  (buffer-string)))
+	 ;; Remove "assets:" prefix
+	 (output-makeup-1 (replace-regexp-in-string "assets:" "" ledger-output))
+	 ;; Remove decimals
+	 (output-makeup-2 (replace-regexp-in-string ",[0-9][0-9]" "" output-makeup-1))
+	 (final-output output-makeup-2)
+	 (footers (list "\n#+end_example\n")))
+
+    (with-temp-file output-file
+      (mapc #'insert headers)
+      (insert final-output)
+      (mapc #'insert footers))
+
+    (message "Ledger report saved to %s" output-file)))
 
 
 (defun fjd_truncate-string (string max-length)
