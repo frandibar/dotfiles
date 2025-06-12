@@ -14,7 +14,7 @@
   (interactive)
   (let* ((ledger-file "~/Sync/ledger/main.ledger")
 	 (command (concat "ledger bal --file " ledger-file
-			  " cash brubank ciudad uala galicia cocos:cleared --current --flat"))
+			  " cash brubank ciudad uala galicia cocos:cleared --cleared --flat"))
 	 (output-file "~/Sync/docs/cash.org")
 	 (headers (list "#+title: Caja\n"
 			"#+date: "
