@@ -10,9 +10,10 @@
 
 
 ;; Play nice with nix-shell.
-(use-package direnv
-  :config
-  (direnv-mode 1))
+(if (not (eq system-type 'windows-nt))
+    (use-package direnv
+      :config
+      (direnv-mode 1)))
 
 
 (provide 'config-terminal)
