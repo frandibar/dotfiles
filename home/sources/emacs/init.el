@@ -9,31 +9,12 @@
 
 (message "Loading my custom init.el...")
 
-(add-to-list 'load-path "~/.config/emacs/lisp/")
 
-;; Setup package manager straight.el as replacement for default
-;; package.el
-;; https://github.com/radian-software/straight.el
-;; Bootstrap straight.el.
-(setopt straight-use-package-by-default t)
-(defvar bootstrap-version)
-
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-(load "fjd_vars.el")
+(if (eq system-type 'windows-nt)
+    (progn
+      (add-to-list 'load-path "~/.emacs.d/lisp/")
+      (add-to-list 'exec-path "c:/ProgramData/chocolatey/bin/"))
+  (add-to-list 'load-path "~/.config/emacs/lisp/"))
 
 ;; Ask for confirmation when closing Emacs.
 (setopt confirm-kill-emacs 'y-or-n-p)
@@ -58,6 +39,34 @@
 
 ;; Disable startup screen
 (setopt inhibit-startup-screen t)
+
+;; Setup package manager straight.el as replacement for default
+;; package.el
+;; https://github.com/radian-software/straight.el
+;; Bootstrap straight.el.
+(defvar bootstrap-version)
+
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Prevent org version mismatch error
+(straight-use-package 'org)
+
+(setopt straight-use-package-by-default t)
+
+(load "fjd_vars.el")
 
 ;; Disable backup files
 (setopt make-backup-files nil)
@@ -126,6 +135,14 @@
 
 ;; Don't show the tab bar when using tab-bar-mode.
 (setopt tab-bar-show nil)
+
+(when (eq system-type 'windows-nt)
+  (set-language-environment "UTF-8")
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (setq-default buffer-file-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
+  (setq default-file-name-coding-system 'utf-8))
 
 ;; Load additional settings
 
