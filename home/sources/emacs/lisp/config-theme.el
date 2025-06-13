@@ -7,6 +7,9 @@
 ;; doom-one
 ;; doom-nord
 ;; doom-zenburn
+
+(use-package all-the-icons)
+
 (use-package doom-themes
   :functions doom-themes-treemacs-config
   :config
