@@ -9,6 +9,7 @@
 ;; doom-zenburn
 
 (use-package all-the-icons)
+(use-package nerd-icons)
 
 (use-package doom-themes
   :functions doom-themes-treemacs-config
