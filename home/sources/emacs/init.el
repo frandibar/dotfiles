@@ -155,6 +155,9 @@
 (load "config-deft.el")
 (load "config-elfeed.el")
 (load "config-mail.el")
+(load "config-ledger.el")
+(load "config-org.el")
+(load "config-pdf.el")
 
 ;; emacs
 (load "config-ace-window.el")
@@ -194,13 +197,11 @@
 (load "config-corfu.el")
 
 ;; languages
-(load "config-org.el")
 (load "config-lilypond.el")
 (load "config-nix.el")
 (load "config-elm.el")
 (load "config-lisp.el")
 (load "config-markdown.el")
-(load "config-ledger.el")
 
 ;; ui
 (load "config-theme.el")
