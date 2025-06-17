@@ -11,6 +11,7 @@
     ./ledger-nano.nix
     ./ledger.nix
     ./lisp.nix
+    ./mail.nix
     ./misc.nix
     ./music.nix
     ./social.nix

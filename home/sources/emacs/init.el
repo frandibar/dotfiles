@@ -154,6 +154,7 @@
 (load "config-calendar.el")
 (load "config-deft.el")
 (load "config-elfeed.el")
+(load "config-mail.el")
 
 ;; emacs
 (load "config-ace-window.el")
