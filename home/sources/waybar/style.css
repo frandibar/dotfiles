@@ -104,12 +104,14 @@ button:hover {
     opacity: 0.8;
     padding: 0 10px;
     color: #ffffff;
-    border: 1px solid #FFFFFF;
+    /* border: 1px solid #FFFFFF; */
+    border: none;
     background-color: #2d3436;
 }
 
 #window {
-    border: 1px solid #FFFFFF;
+    /* border: 1px solid #FFFFFF; */
+    border: none;
     padding: 0 10px;
     border-radius: 12px;
     background-color: #2d3436;
