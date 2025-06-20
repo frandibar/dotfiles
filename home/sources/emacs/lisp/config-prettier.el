@@ -2,10 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-;; For js code formatting.
-(use-package prettier
-  :hook
-  (after-init . global-prettier-mode))
+;; For code formatting.
+
+;; Note: the unofficial prettier package does not work properly
+;; (prettier not found error).
+(use-package prettier-js)
 
 (provide 'config-prettier)
 ;;; config-prettier.el ends here
