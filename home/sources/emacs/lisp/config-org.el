@@ -4,7 +4,6 @@
 
 (require 'fjd)
 (require 'fjd_vars)
-(require 'org)
 
 (defun fjd_org-which-function ()
   "Return concatenated string with path to current header.
