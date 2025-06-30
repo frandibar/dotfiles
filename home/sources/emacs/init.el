@@ -202,6 +202,7 @@
 (load "config-elm.el")
 (load "config-lisp.el")
 (load "config-markdown.el")
+(load "config-graphviz.el")
 
 ;; ui
 (load "config-theme.el")
