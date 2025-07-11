@@ -43,6 +43,11 @@
     ".config/X11/Xresources".source = ./sources/X11/Xresources;
     ".vimrc".source = ./sources/vimrc;
     ".sbclrc".source = ./sources/sbclrc;
+
+    # In order to be able to handle org-protocol scheme from within emacs.
+    # i.e. capturing a link from the browser.
+    # Further info: https://orgmode.org/worg/org-contrib/org-protocol.html
+    ".local/share/applications/org-protocol.desktop".source = ./sources/emacs/org-protocol.desktop;
   };
 
   # Let home manager install and manage itself.
