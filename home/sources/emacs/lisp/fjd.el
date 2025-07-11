@@ -2,20 +2,21 @@
 ;;; Commentary:
 ;;; Code:
 
-;; This function was deprecated in favor of `fjd_generate-cash-org-file'.
-(defun fjd_update-cash ()
-  "Update cash.org with the output of cash.sh."
-  (interactive)
-  (call-process-shell-command "~/Sync/ledger/cash.sh > ~/Sync/docs/cash.org" nil 0))
+;; Prevent compiler warnings
+(declare-function lispy-forward "lispy")
+(declare-function s-split "s")
+(declare-function special-lispy-tab "lispy")
 
 
 (defun fjd_generate-cash-org-file ()
   "Generate a ledger balance report from \"main.ledger\" into \"cash.org\"."
   (interactive)
-  (let* ((ledger-file "~/Sync/ledger/main.ledger")
+  (let* ((ledger-file (expand-file-name
+		       (file-name-concat "~" "Sync" "ledger" "main.ledger")))
 	 (command (concat "ledger bal --file " ledger-file
 			  " cash brubank ciudad uala galicia cocos:cleared --cleared --flat"))
-	 (output-file "~/Sync/docs/cash.org")
+	 (output-file (expand-file-name
+		       (file-name-concat "~" "Sync" "docs" "cash.org")))
 	 (headers (list "#+title: Caja\n"
 			"#+date: "
 			;; #+date: lun 02 jun 2025 14:12:49 -03
@@ -55,15 +56,17 @@
     (yank)))
 
 
-(defvar fjd_facturas-dir (expand-file-name "~/Sync/keybase/docs/facturas/"))
+(defvar fjd_facturas-dir (file-name-as-directory
+			  (expand-file-name
+			   (file-name-concat "~" "Sync" "keybase" "docs" "facturas"))))
 
 
 (defun fjd_mv-facturas ()
-  "Move facturas from ~/Downloads to their corresponding directory.
-
-This function could be a shell script but I prefer living in Emacs."
+  "Move facturas from ~/Downloads to their corresponding directory."
   (interactive)
-  (let* ((downloads-dir (expand-file-name "~/Downloads/"))
+  (let* ((downloads-dir (file-name-as-directory
+			 (expand-file-name
+			  (file-name-concat "~" "Downloads"))))
 	 (servicios '("abl"
 		      "aysa"
 		      "edenor"
@@ -71,36 +74,36 @@ This function could be a shell script but I prefer living in Emacs."
 		      "osde"
 		      "personal"))
 	 (downloaded-files (directory-files downloads-dir
-					    nil ; relative names
-					    ".pdf$")))
-    (mapc (lambda (file)
-	    (let ((filename (file-name-sans-extension file)))
-	      (when (member filename servicios)
-		(let ((cmd (concat "mv "
-				   downloads-dir
-				   file
-				   " "
-				   fjd_facturas-dir
-				   filename
-				   "/"
-				   (fjd_mv-facturas--next-file-name filename))))
-		  (message cmd)
-		  (call-process-shell-command cmd)))))
-	  downloaded-files)))
+					    t ; absolute paths
+					    "\\.[pP][dD][fF]$"))
+	 (files-to-move (seq-filter (lambda (file)
+				      (member (file-name-base file)
+					      servicios))
+				    downloaded-files)))
+    (if files-to-move
+	(let ((output-buffer (generate-new-buffer "*facturas*")))
+	  (with-output-to-temp-buffer output-buffer
+	    (mapc (lambda (file)
+		    (let ((new-file-name
+			   (file-name-concat fjd_facturas-dir
+					     (file-name-base file)
+					     (fjd_mv-facturas--next-file-name
+					      (file-name-nondirectory file)))))
+		      (rename-file file new-file-name)
+		      (princ (concat "Moved " file " into " new-file-name "\n"))))
+		  files-to-move)))
+      (message "Nothing to move."))))
 
 
-(defun fjd_mv-facturas--yy-mm-to-filename (yy-mm)
-  "Given YY-MM as (yy mm), return string 'YY-MM.pdf'."
-  (apply 'format "%02d-%02d.pdf" yy-mm))
+(defun fjd_mv-facturas--yy-mm-to-filename (yy-mm extension)
+  "Given YY-MM as (yy mm), return string 'YY-MM.[EXTENSION]'."
+  (concat (apply #'format "%02d-%02d" yy-mm) "." extension))
 
 
 (defun fjd_mv-facturas--filename-to-yy-mm (filename)
-  "Parse FILENAME 'YY-MM.pdf' into (YY MM)."
+  "Parse FILENAME such as 'YY-MM.pdf' into (YY MM)."
   (mapcar #'string-to-number
-	  (s-split "-"
-		   (car
-		    (s-split "\\."
-			     filename)))))
+	  (s-split "-" (file-name-sans-extension filename))))
 
 
 (defun fjd_mv-facturas--next-period (yy-mm)
@@ -111,17 +114,19 @@ This function could be a shell script but I prefer living in Emacs."
       (list yy (1+ mm)))))
 
 
-(defun fjd_mv-facturas--next-file-name (service)
-  "Return the filename of the next period for SERVICE."
+(defun fjd_mv-facturas--next-file-name (filename)
+  "Return the filename of the next period for FILENAME."
   (let* ((files (directory-files
-		 (concat fjd_facturas-dir service)
+		 (file-name-concat fjd_facturas-dir
+				   (file-name-sans-extension filename))
 		 nil			; relative name
-		 "[0-9][0-9]-[0-9][0-9].pdf"))
+		 "[0-9][0-9]-[0-9][0-9]\\."))
 	 (last-period-filename (car (last files))))
-    (-> last-period-filename
-	fjd_mv-facturas--filename-to-yy-mm
-	fjd_mv-facturas--next-period
-	fjd_mv-facturas--yy-mm-to-filename)))
+
+    (fjd_mv-facturas--yy-mm-to-filename
+     (fjd_mv-facturas--next-period
+      (fjd_mv-facturas--filename-to-yy-mm last-period-filename))
+     (file-name-extension filename))))
 
 
 (defun fjd_insert-google-maps-link ()
