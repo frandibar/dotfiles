@@ -160,11 +160,14 @@
 (load "config-pdf.el")
 
 ;; emacs
-(load "config-ace-window.el")
 (load "config-dired.el")
-(load "config-avy.el")
 (load "config-ligatures.el")
 (load "config-which-key.el")
+
+;; jumping around
+(load "config-ace-window.el")
+(load "config-avy.el")
+(load "config-navigation.el")
 
 ;; editing
 (load "config-multiple-cursors.el")
