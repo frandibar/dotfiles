@@ -239,6 +239,11 @@
 	    (kbd "C-c v w t")
 	    'stolen-toggle-window-split)
 
+;; Override M-z keybinding from zap-to-char to zap-up-to-char.
+(define-key fjd_custom-bindings-map
+	    (kbd "M-z")
+	    'zap-up-to-char)
+
 (define-minor-mode fjd_custom-bindings-mode
   "A mode that activates my custom keybindings."
   :init-value t
