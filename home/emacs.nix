@@ -23,8 +23,15 @@
     imagemagick      # casual suite
 
     ripgrep
+
+    # emacs-everywhere works in org, not wayland
     xclip            # emacs-everywhere
     xorg.xwininfo    # emacs-everywhere
+    xdotool          # emacs-everywhere
+    # for wayland
+    # https://thanosapollo.org/posts/use-emacs-everywhere/
+    wtype
+
   ];
 
   # To install and enable the systemd user service for Emacs daemon.

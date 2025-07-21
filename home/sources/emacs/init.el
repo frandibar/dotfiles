@@ -174,6 +174,7 @@
 (load "config-expand-region.el")
 (load "config-zop-to-char.el")
 (load "config-surround.el")
+(load "config-everywhere.el")
 
 ;; tools
 (load "config-magit.el")
