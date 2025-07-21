@@ -18,9 +18,9 @@
   ;; simply backspace over them.
   (org-hide-emphasis-markers t)
 
-  ;; Align tags from right to left.
   ;; Use 0 to leave one space after heading for tags.
-  (org-tags-column -80)
+  ;; This settings works better when using different monitor sizes.
+  (org-tags-column 0)
 
   ;; Display UTF characters for entries such as \alpha. Use M-TAB to
   ;; autocomplete.
