@@ -95,23 +95,23 @@
       (message "Nothing to move."))))
 
 
-(defun fjd_mv-facturas--yy-mm-to-filename (yy-mm extension)
-  "Given YY-MM as (yy mm), return string 'YY-MM.[EXTENSION]'."
-  (concat (apply #'format "%02d-%02d" yy-mm) "." extension))
+(defun fjd_mv-facturas--yyyy-mm-to-filename (yyyy-mm extension)
+  "Given YYYY-MM as (yyyy mm), return string `YYYY-MM.[EXTENSION]'."
+  (concat (apply #'format "%02d-%02d" yyyy-mm) "." extension))
 
 
-(defun fjd_mv-facturas--filename-to-yy-mm (filename)
-  "Parse FILENAME such as 'YY-MM.pdf' into (YY MM)."
+(defun fjd_mv-facturas--filename-to-yyyy-mm (filename)
+  "Parse FILENAME such as `YYYY-MM.pdf' into (YYYY MM)."
   (mapcar #'string-to-number
 	  (s-split "-" (file-name-sans-extension filename))))
 
 
-(defun fjd_mv-facturas--next-period (yy-mm)
-  "Given YY-MM as (yy mm), add one month and return result."
-  (pcase-let ((`(,yy ,mm) yy-mm))
+(defun fjd_mv-facturas--next-period (yyyy-mm)
+  "Given YYYY-MM as (yyyy mm), add one month and return result."
+  (pcase-let ((`(,yyyy ,mm) yyyy-mm))
     (if (= mm 12)
-	(list (1+ yy) 1)
-      (list yy (1+ mm)))))
+	(list (1+ yyyy) 1)
+      (list yyyy (1+ mm)))))
 
 
 (defun fjd_mv-facturas--next-file-name (filename)
@@ -120,12 +120,12 @@
 		 (file-name-concat fjd_facturas-dir
 				   (file-name-sans-extension filename))
 		 nil			; relative name
-		 "[0-9][0-9]-[0-9][0-9]\\."))
+		 "[0-9][0-9][0-9][0-9]-[0-9][0-9]\\."))
 	 (last-period-filename (car (last files))))
 
-    (fjd_mv-facturas--yy-mm-to-filename
+    (fjd_mv-facturas--yyyy-mm-to-filename
      (fjd_mv-facturas--next-period
-      (fjd_mv-facturas--filename-to-yy-mm last-period-filename))
+      (fjd_mv-facturas--filename-to-yyyy-mm last-period-filename))
      (file-name-extension filename))))
 
 
