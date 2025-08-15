@@ -9,7 +9,7 @@
 
 
 (defun fjd_generate-cash-org-file ()
-  "Generate a ledger balance report from \"main.ledger\" into \"cash.org\"."
+  "Generate a ledger balance report from `main.ledger' into `cash.org'."
   (interactive)
   (let* ((ledger-file (expand-file-name
 		       (file-name-concat "~" "Sync" "ledger" "main.ledger")))

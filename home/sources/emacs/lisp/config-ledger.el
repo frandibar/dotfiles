@@ -80,7 +80,6 @@ with `y' (remember to show grouping with `g d', you should call
         (("C-M-n" . fjd_ledger-move-xact-down))
 	(("C-c C-b" . fjd_ledger-post-edit-amount)))
   :hook
-  (ledger-mode . (lambda () (add-hook 'after-save-hook 'fjd_generate-cash-org-file nil t)))
   (ledger-report-mode . hl-line-mode)
 
   :custom
