@@ -14,7 +14,7 @@
   (let* ((ledger-file (expand-file-name
 		       (file-name-concat "~" "Sync" "ledger" "main.ledger")))
 	 (command (concat "ledger bal --file " ledger-file
-			  " cash brubank ciudad uala galicia cocos:cleared --cleared --flat"))
+			  " cash brubank ciudad uala galicia cocos:cocorma --cleared --flat"))
 	 (output-file (expand-file-name
 		       (file-name-concat "~" "Sync" "docs" "cash.org")))
 	 (headers (list "#+title: Caja\n"
