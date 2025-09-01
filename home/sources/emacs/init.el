@@ -163,6 +163,7 @@
 (load "config-dired.el")
 (load "config-ligatures.el")
 (load "config-which-key.el")
+(load "config-ibuffer.el")
 
 ;; jumping around
 (load "config-ace-window.el")
